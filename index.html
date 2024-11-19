@@ -7,14 +7,23 @@
         color: rgba(255,200,200,1)
     }
     .rgbtext {
-        background: linear-gradient(#f00,#0f0)
+        background: linear-gradient(#f00,#0f0,#00f)
     }
     .top {
         text-align: center;
         font-size: 24px;
-        font-family: "Rye";
+        font-family: "Rye", serif;
+        animation: shake 1s ease 0s infinite normal none;
+     }
+     @keyframes shake {
+        0% {transform: translate(20px,15px)}
+        20% {transform: translate(0px,15px)}
+        40% {transform: translate(-10px,0px)}
+        60% {transform: translate(-5px,-17px)}
+        80% {transform: translate(-20px,-20px)}
+        100% {transform: translate(0px,0px)}
+     }
 
-    }
 </style>
 
 <body>
