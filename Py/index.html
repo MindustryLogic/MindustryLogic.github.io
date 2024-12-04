@@ -1,2 +1,31 @@
 <!DOCTYPE html>
-<title>hub</title>
+<title>Nav Hub</title>
+<link rel="icon" href="house.png" />
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
+    .top {
+        text-align: center;
+        font-size: 24px;
+        font-family: "Rye", serif;
+        animation : shake 500ms ease 0s infinite normal none;
+
+    }
+    @keyframes shake{
+        0% {transform: translate(20px,15px)}
+        10% {transform: translate(0px,15px)}
+        20% {transform: translate(-10px,0px)}
+        30% {transform: translate(-5px,-17px)}
+        40% {transform: translate(-20px,-20px)}
+        50% {transform: translate(-4px,-10px)}
+        60% {transform: translate(-17px,5px)}
+        70% {transform: translate(-6px,18px)}
+        80% {transform: translate(-15px,15px)}
+        90% {transform: translate(8px,-10px)}
+        100% {transform: translate(0px,0px)}
+    }
+</style>
+
+<body>
+    <div class="top">This is a page</div>
+    <hr>
+</body>
