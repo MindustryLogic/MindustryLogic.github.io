@@ -1,0 +1,4 @@
+site_name: Very convenient page
+site_url: https://mindustrylogic.github.io/Py
+theme:
+  name: material
