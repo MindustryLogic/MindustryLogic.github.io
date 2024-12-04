@@ -39,6 +39,10 @@
       li a:hover {
         background-color: #111;
       }
+      li a.active{
+        background-color: cyan;
+        color: darkgreen;
+      }
      @keyframes shake {
         0% {transform: translate(20px,15px)}
         10% {transform: translate(0px,15px)}
@@ -59,7 +63,7 @@
     <div class="top">This i s   a    p   a   g   e</div>
     <hr>
     <ul>
-        <li><a href="/">Home Page</a></li>
+        <li><a class="active" href="/">Home Page</a></li>
         <li><a href="/Py">Man Py</a></li>
         <li><a href="https://github.com/MindustryLogic/Mindustry-Terraria-Overhaul">A mod</a></li>
     </ul>
