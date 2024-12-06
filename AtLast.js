@@ -1,0 +1,3 @@
+function moretest(){
+    alert("sip");
+}
