@@ -38,26 +38,12 @@
          animation: loop2 60s linear 0s infinite normal none;
          animation-delay: 30s;
       }
-      .fancy {
-      font-family: 'Cutive Mono', monospace;
-      font-size: 20px;
-      position: sticky;
-      top: 5px;
-      z-index:2;
-      }
       ul {
          list-style-type: none;
          margin: 0;
          padding: 0;
          overflow: hidden;
          background-color: #333;
-      }
-   .fancy ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #111;
       }
       li {
          float: left;
@@ -69,6 +55,27 @@
          padding: 14px 16px;
          text-decoration: none;
       }
+      li a:hover {
+         background-color: #111;
+      }
+      li a.active{
+         background-color: cyan;
+         color: darkgreen;
+      }
+      .fancy {
+         font-family: 'Cutive Mono', monospace;
+         font-size: 20px;
+         position: sticky;
+         top: 5px;
+         z-index:2;
+         }
+      .fancy ul {
+         list-style-type: none;
+         margin: 0;
+         padding: 0;
+         overflow: hidden;
+         background-color: #111;
+      }
       .fancy ul li {
          display: block;
          color: #aea04b;
@@ -76,9 +83,38 @@
          padding: 14px 16px;
          text-decoration: none;
       }
-      /* Change the link color to #111 (black) on hover */
-      li a:hover {
-         background-color: #111;
+      
+      .fancy ul li a, .dropbtn {
+         display: inline-block;
+         color: white;
+         text-align: center;
+         padding: 14px 16px;
+         text-decoration: none;
+      }
+      .fancy ul li a:hover, .dropdown:hover .dropbtn {
+         background-color: red;
+         }
+      .fancy ul li.dropdown {
+         display: inline-block;
+      }
+      .fancy, .dropdown-content {
+         display: none;
+         position: sticky;
+         background-color: #f9f9f9;
+         min-width: 160px;
+         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+         z-index: 1;
+      }
+      .fancy, .dropdown-content a {
+         color: black;
+         padding: 12px 16px;
+         text-decoration: none;
+         display: block;
+         text-align: left;
+      }
+      .fancy, .dropdown-content a:hover {background-color: #f1f1a1;}
+      .fancy, .dropdown:hover .dropdown-content {
+         display: block;
       }
       .fancy ul li:hover{
          background-color: indianred;
@@ -87,30 +123,6 @@
       .fancy ul li.active{
          background-color: fuchsia;
          color: lawngreen;
-      }
-      .fancy ul li ul {
-         display:none;
-         position:relative;
-         background-color: #f99;
-         border: solid 1px #000;
-      }
-      .fancy ul li ul:hover{
-         display:block;
-      }
-      .fancy ul li ul li {
-         display:block;
-         white-space:nowarp;
-      }
-      .fancy ul li ul li a{
-         display:block;
-         padding: 14px 16px;
-         text-decoration:none;
-         color: #444;
-
-      }
-      li a.active{
-         background-color: cyan;
-         color: darkgreen;
       }
       @keyframes shake {
          0% {transform: translate(20px,15px)}
