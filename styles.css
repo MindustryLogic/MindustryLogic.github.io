@@ -65,50 +65,50 @@
       .fancy {
          font-family: 'Cutive Mono', monospace;
          font-size: 20px;
-         position: sticky;
+         position: relative;
          top: 5px;
-         z-index:1;
          }
       .fancy ul {
          list-style-type: none;
-         margin: 0;
-         padding: 0;
-         overflow: hidden;
-         background-color: #999;
+         display: inline-grid;
+         margin:0;
+         padding:0;
+         overflow:hidden;
+         background-color: #333
       }
       .fancy li {
          float:left;
       }
       
       .fancy li a, .dropbtn {
-         display: inline-block;
+         display:inline-grid;
          text-align: center;
-         text-decoration: none;
-         color: #00f;
+         color: white;
+         padding: 0;
+         margin: 0;
       }
       .fancy li a:hover, .dropdown:hover .dropbtn {
          background-color: red;
-         color: #ff0;
          }
       .fancy li.dropdown {
-         display: inline-block;
+         display: inline-grid;
       }
       .fancy, .dropdown-content {
-         display: none;
-         position: sticky;
-         background-color: #f9f9f9;
-         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-         z-index: 1;
+         display:none;
+         position:sticky;
+         background-color:#333;
       }
       .fancy, .dropdown-content a {
-         color: black;
-         text-decoration: none;
-         display: block;
-         text-align: left;
+         color:black;
+         text-align:left;
       }
-      .fancy, .dropdown-content a:hover {background-color: #f1f1a1;}
+      .fancy, .dropdown-content a:hover {
+         background-color: #111;
+         margin: 0;
+         padding: 0;
+      }
       .fancy, .dropdown:hover .dropdown-content {
-         display: block;
+         display: inline-grid;
       }
       @keyframes shake {
          0% {transform: translate(20px,15px)}
