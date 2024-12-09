@@ -77,10 +77,7 @@
          background-color: #999;
       }
       .fancy li {
-         display: block;
-         color: #aea04b;
-         text-align: center;
-         text-decoration: none;
+         float:left;
       }
       
       .fancy li a, .dropbtn {
@@ -94,7 +91,7 @@
          color: #ff0;
          }
       .fancy li.dropdown {
-         display: block;
+         display: inline-block;
       }
       .fancy, .dropdown-content {
          display: none;
