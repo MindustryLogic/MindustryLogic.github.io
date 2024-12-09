@@ -1,55 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap');
-    h1 {
-        color: rgba(255,200,200,1)
-    }
-    .rgbtext {
-        background: linear-gradient(#f00,#0f0,#00f)
-    }
-    .top {
-        text-align: center;
-        font-size: 24px;
-        font-family: "Rye", serif;
-        animation: shake 500ms ease 0s infinite normal none;
-     }
-     #block{
-        left:0px;
-        height: 7em;
-        background: #FFFFFF;
-        position: absolute;
-        width:100%;
-        overflow: hidden;
-     }
-     .loowhat{
-        width:100%;
-        padding-top: 20px;
-        margin:0 auto;
-        font-size: 5em;
-        color: indigo;
-        white-space: nowrap;
-        font-family: 'Imperial Script', cursive;
-        text-transform: uppercase;
-        font-weight: 300;
-     }
-     .lorem_ipsum {
-        display: inline-block;
-        animation: loop 60s linear 0s infinite normal none;
-     }
-     .lorem_ipsum2 {
-        display: inline-block;
-        animation: loop2 60s linear 0s infinite normal none;
-        animation-delay: 30s;
-     }
-     .fancy {
+   .rgbtext {
+         background: linear-gradient(#f00,#0f0,#00f)
+      }
+   .top {
+         text-align: center;
+         font-size: 24px;
+         font-family: "Rye", serif;
+         animation: shake 500ms ease 0s infinite normal none;
+      }
+      #block{
+         left:0px;
+         height: 56px;
+         background: #AAA;
+         position: relative;
+         width:100%;
+         overflow: hidden;
+      }
+      .loowhat{
+         width:100%;
+         padding-top: 0px;
+         margin: 0;
+         font-size: 56px;
+         color: rebeccapurple;
+         white-space: nowrap;
+         font-family: 'Imperial Script', cursive;
+         text-transform: uppercase;
+         font-weight: 300;
+      }
+      .lorem_ipsum {
+         display: inline-block;
+         animation: loop 60s linear 0s infinite normal none;
+      }
+      .lorem_ipsum2 {
+         display: inline-block;
+         animation: loop2 60s linear 0s infinite normal none;
+         animation-delay: 30s;
+      }
+      .fancy {
       font-family: 'Cutive Mono', monospace;
-     }
-     ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
+      font-size: 20px;
+      position: sticky;
+      top: 5px;
+      z-index:2;
+      }
+      ul {
+         list-style-type: none;
+         margin: 0;
+         padding: 0;
+         overflow: hidden;
+         background-color: #333;
       }
    .fancy ul {
       list-style-type: none;
@@ -59,7 +60,7 @@
       background-color: #111;
       }
       li {
-        float: left;
+         float: left;
       }
       li a{
          display: block;
@@ -68,46 +69,75 @@
          padding: 14px 16px;
          text-decoration: none;
       }
-      .fancy li a{
+      .fancy ul li {
          display: block;
-         color: #f08;
+         color: #aea04b;
          text-align: center;
          padding: 14px 16px;
          text-decoration: none;
       }
       /* Change the link color to #111 (black) on hover */
       li a:hover {
-        background-color: #111;
+         background-color: #111;
       }
-      .fancy li a:hover{
+      .fancy ul li:hover{
          background-color: indianred;
+         color: navy;
       }
-      .fancy li a.active{
+      .fancy ul li.active{
          background-color: fuchsia;
          color: lawngreen;
       }
-      li a.active{
-        background-color: cyan;
-        color: darkgreen;
+      .fancy ul li ul {
+         display:none;
+         position:relative;
+         background-color: #f99;
+         border: solid 1px #000;
       }
-     @keyframes shake {
-        0% {transform: translate(20px,15px)}
-        10% {transform: translate(0px,15px)}
-        20% {transform: translate(-10px,0px)}
-        30% {transform: translate(-5px,-17px)}
-        40% {transform: translate(-20px,-20px)}
-        50% {transform: translate(-4px,-10px)}
-        60% {transform: translate(17px,5px);}
-        70% {transform: translate(-6px,18px);}
-        80% {transform: translate(-15px,15px);}
-        90% {transform: translate(8px,-10px);}
-        100% {transform: translate(0px,0px)}
-     }
-     @keyframes loop {
-        0% {transform: translateX(100%);}
-        100% {transform: translateX(-100%);}
-     }
-     @keyframes loop2 {
-        0% {transform: translateX(0%);}
-        100% {transform: translateX(-200%);}
-     }
+      .fancy ul li ul:hover{
+         display:block;
+      }
+      .fancy ul li ul li {
+         display:block;
+         white-space:nowarp;
+      }
+      .fancy ul li ul li a{
+         display:block;
+         padding: 14px 16px;
+         text-decoration:none;
+         color: #444;
+
+      }
+      li a.active{
+         background-color: cyan;
+         color: darkgreen;
+      }
+      @keyframes shake {
+         0% {transform: translate(20px,15px)}
+         10% {transform: translate(0px,15px)}
+         20% {transform: translate(-10px,0px)}
+         30% {transform: translate(-5px,-17px)}
+         40% {transform: translate(-20px,-20px)}
+         50% {transform: translate(-4px,-10px)}
+         60% {transform: translate(17px,5px);}
+         70% {transform: translate(-6px,18px);}
+         80% {transform: translate(-15px,15px);}
+         90% {transform: translate(8px,-10px);}
+         100% {transform: translate(0px,0px)}
+      }
+      @keyframes loop {
+         0% {transform: translateX(100%);}
+         100% {transform: translateX(-100%);}
+      }
+      @keyframes loop2 {
+         0% {transform: translateX(0%);}
+         100% {transform: translateX(-200%);}
+      }
+.filler_text{
+   font-size: 100px;
+   white-space: warp;
+}/* this will probably never be used */
+.extremely_convenient{
+   position: sticky;
+   top: 7px;
+}
