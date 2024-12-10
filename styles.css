@@ -84,7 +84,7 @@
          display:inline-grid;
          text-align: center;
          color: white;
-         padding: 0;
+         padding: 14px 16px;
          margin: 0;
       }
       .fancy li a:hover, .dropdown:hover .dropbtn {
@@ -95,17 +95,18 @@
       }
       .fancy, .dropdown-content {
          display:none;
+         padding: 0;
          position:sticky;
          background-color:#333;
       }
       .fancy, .dropdown-content a {
-         color:black;
+         background-color:#111;
          text-align:left;
+         padding: 0;
       }
       .fancy, .dropdown-content a:hover {
          background-color: #111;
          margin: 0;
-         padding: 0;
       }
       .fancy, .dropdown:hover .dropdown-content {
          display: inline-grid;
@@ -135,6 +136,3 @@
    font-size: 100px;
    white-space: warp;
 }/* this will probably never be used */
-.extremely_convenient{
-   
-}

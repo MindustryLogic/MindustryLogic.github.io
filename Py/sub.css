@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+.top {
+    text-align: center;
+    font-size: 24px;
+    font-family: "Rye", serif;
+    animation: shake 500ms ease 0s infinite normal none;
+}
+@keyframes shake {
+    0% {transform: translate(20px,15px)}
+    10% {transform: translate(0px,15px)}
+    20% {transform: translate(-10px,0px)}
+    30% {transform: translate(-5px,-17px)}
+    40% {transform: translate(-20px,-20px)}
+    50% {transform: translate(-4px,-10px)}
+    60% {transform: translate(17px,5px);}
+    70% {transform: translate(-6px,18px);}
+    80% {transform: translate(-15px,15px);}
+    90% {transform: translate(8px,-10px);}
+    100% {transform: translate(0px,0px)}
+ }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+ }
+ li {
+    float: left;
+ }
+ li a{
+    display: block;
+    color: #f08;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+ }
+ li a:hover {
+    background-color: #111;
+ }
+ li a.active{
+    background-color: cyan;
+    color: darkgreen;
+ }
+ .fancy {
+    font-family: 'Cutive Mono', monospace;
+    font-size: 20px;
+    position: relative;
+    top: 5px;
+    }
+ .fancy ul {
+    list-style-type: none;
+    display: inline-grid;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    background-color: #333
+ }
+ .fancy li {
+    float:left;
+ }
+ 
+ .fancy li a, .dropbtn {
+    display:inline-grid;
+    text-align: center;
+    color: white;
+    padding: 14px 16px;
+    margin: 0;
+ }
+ .fancy li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+    }
+ .fancy li.dropdown {
+    display: inline-grid;
+ }
+ .fancy, .dropdown-content {
+    display:none;
+    padding: 0;
+    position:sticky;
+    background-color:#333;
+ }
+ .fancy, .dropdown-content a {
+    background-color:#111;
+    text-align:left;
+    padding: 0;
+ }
+ .fancy, .dropdown-content a:hover {
+    background-color: #111;
+    margin: 0;
+ }
+ .fancy, .dropdown:hover .dropdown-content {
+    display: inline-grid;
+ }
+ @keyframes shake {
+    0% {transform: translate(20px,15px)}
+    10% {transform: translate(0px,15px)}
+    20% {transform: translate(-10px,0px)}
+    30% {transform: translate(-5px,-17px)}
+    40% {transform: translate(-20px,-20px)}
+    50% {transform: translate(-4px,-10px)}
+    60% {transform: translate(17px,5px);}
+    70% {transform: translate(-6px,18px);}
+    80% {transform: translate(-15px,15px);}
+    90% {transform: translate(8px,-10px);}
+    100% {transform: translate(0px,0px)}
+ }
+#main{
+    font-family: "Tinos", serif;
+}
