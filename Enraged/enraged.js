@@ -17,10 +17,9 @@ function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
   }
-function mili(){
-    if (typeof x === "number"){
-    let x = 0;} else{
-        x+1;
-    document.getElementById('tes').innerHTML= x;
-}}
-/*WTF*/
+function ran(){
+    console.log(Math.random())
+    setTimeout(function(){
+        document.getElementById("tes").innerHTML = Math.round(10*(0.5-Math.random()))
+    }, 2000);
+}/* i have a feeling tht this will be extremely fucking nested*/

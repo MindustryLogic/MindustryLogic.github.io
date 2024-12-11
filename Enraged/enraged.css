@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
-  
+  body{
+    background-color: aqua;
+  }
   .Main {
     width: 1760px;
     height: 990px;
-    background-color: white;
+    background-color: grey;
   }
 
   @keyframes cc {
     to {
-      background-color: white;
+      background-color: greenyellow;
     }
   }
