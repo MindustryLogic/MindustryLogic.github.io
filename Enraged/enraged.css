@@ -7,6 +7,8 @@
     height: 990px;
     background-color: grey;
     position:absolute;
+    margin:40px 40px;
+    padding:0 0;
     z-index: 0;
   }
   @keyframes cc {
@@ -21,4 +23,18 @@
     margin:247.5px auto;
     position:relative;
     background-color: red;
-  }/*Kinda stupid centering ngl*/
+  }/*Kinda stupid centering ngl
+  like it's height/4*/
+  .frameOL{
+    z-index: 32767;
+    width: 1760px;
+    height: 990px;
+    margin:0 0;
+    padding:0 0;
+    background-color: rgba(0,0,0,0);
+    border:solid 40px rgba(255,255,0,1);
+    position:absolute;
+  }/* why isn't it lining up 
+  solved by margin (bruh)
+  ok uh very nested stuff next*/
+
