@@ -41,8 +41,8 @@
   @keyframes moveRandomly {
    from { 
     transform: translate(
-      calc(100vw * var(--random-x))
-      calc(100vh * var(--random-y))
+      calc(100vw * var(--random-x,0.5))
+      calc(100vh * var(--random-y,0.5))
     )
   }
    to {
@@ -50,8 +50,8 @@
    }
   }
 .animated-element {
-  --random-x: Math.random();
-  --random-y: Math.random();
+  --random-x: random();
+  --random-y: random();
   animation: moveRandomly 5s linear forwards;
   position: relative;
   z-index: 2;
