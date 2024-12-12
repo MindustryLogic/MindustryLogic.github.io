@@ -1,3 +1,8 @@
+function ranmove(){
+document.querySelectorAll('.animated-element').forEach(el => {
+  el.style.setProperty('--random-x', Math.random());
+  el.style.setProperty('--random-y', Math.random());
+});}
 function cc(){
     document.querySelector(".Main").style.animation="cc 10s";
     const music = new Audio('RGC.mp3');
