@@ -54,7 +54,14 @@
   --random-y: random();
   animation: moveRandomly 5s linear forwards;
   position: relative;
+  content: 'yes';
   z-index: 2;
   color: black;
 }
+.animated-element::after {
+  content: var(--random-x);
+  display: block;
+  color: red;
+}
+
 
