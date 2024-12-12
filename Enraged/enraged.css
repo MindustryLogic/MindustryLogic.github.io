@@ -11,6 +11,11 @@
     padding:0 0;
     z-index: 0;
   }
+  @-webkit-keyframes cc {
+    to {
+      background-color: greenyellow;
+    }
+  }
   @keyframes cc {
     to {
       background-color: greenyellow;
@@ -32,12 +37,23 @@
     margin:0 0;
     padding:0 0;
     background-color: rgba(0,0,0,0);
-    border:solid 40px rgba(255,255,0,1);
+    border:solid 40px rgba(255,255,0,0.4);
     position:absolute;
   }/* why isn't it lining up 
   solved by margin (bruh)
   ok uh very nested stuff next*/
   /* ai gen stuff*/
+  @-webkit-keyframes moveRandomly {
+   from { 
+    transform: translate(
+      calc(100vw * var(--random-x,0.5))
+      calc(100vh * var(--random-y,0.5))
+    )
+  }
+  to {
+  transform: translate(50vw,50vh)
+   }
+  }
   @keyframes moveRandomly {
    from { 
     transform: translate(
@@ -52,7 +68,8 @@
 .animated-element {
   --random-x: random();
   --random-y: random();
-  animation: moveRandomly 5s linear forwards;
+  -webkit-animation: moveRandomly 5s linear forwards;
+          animation: moveRandomly 5s linear forwards;
   position: relative;
   content: 'yes';
   z-index: 2;
@@ -62,6 +79,12 @@
   content: var(--random-x);
   display: block;
   color: red;
+}
+.thing{
+  position: fixed;
+  bottom: 0;
+  white-space: wrap;
+  z-index: 40000;
 }
 
 
