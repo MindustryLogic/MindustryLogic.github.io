@@ -86,5 +86,14 @@
   white-space: wrap;
   z-index: 40000;
 }
-
-
+/*stack overflow REEEEE*/
+@keyframes uh_yes{
+  0% {color:black}
+  49%{color:black}
+  50%{color:white}
+  51%{color:black}
+  100%{color:black}
+}
+p {
+  animation: uh_yes 1s linear 0s infinite normal none;
+}
