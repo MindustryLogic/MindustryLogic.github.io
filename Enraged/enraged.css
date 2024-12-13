@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
+  :root{
+    --random-x:25;
+    --random-y:25;
+    --timeRan: 1s;
+  }
   body{
     background-color: aqua;
   }
@@ -46,8 +51,8 @@
   @-webkit-keyframes moveRandomly {
    from { 
     transform: translate(
-      calc(100vw * var(--random-x,0.5))
-      calc(100vh * var(--random-y,0.5))
+      calc(100vw * var(--random-x))
+      calc(100vh * var(--random-y))
     )
   }
   to {
@@ -57,8 +62,8 @@
   @keyframes moveRandomly {
    from { 
     transform: translate(
-      calc(100vw * var(--random-x,0.5))
-      calc(100vh * var(--random-y,0.5))
+      calc(100vw * var(--random-x))
+      calc(100vh * var(--random-y))
     )
   }
    to {
@@ -66,8 +71,8 @@
    }
   }
 .animated-element {
-  --random-x: random();
-  --random-y: random();
+  --random-x: 25;
+  --random-y: 25;
   -webkit-animation: moveRandomly 5s linear forwards;
           animation: moveRandomly 5s linear forwards;
   position: relative;
@@ -95,5 +100,5 @@
   100%{color:black}
 }
 p {
-  animation: uh_yes 1s linear 0s infinite normal none;
+  animation: uh_yes var(--timeRan) linear 0s 5 normal none;
 }
