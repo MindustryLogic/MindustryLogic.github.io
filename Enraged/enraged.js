@@ -4,8 +4,10 @@ function ranmove(){
         el.style.setProperty('--random-y', Math.random());
     });
     console.log(Math.random())}
+function Test_random(){
 const label = document.querySelector("p");
 label.style.animationDuration = Math.random() + "s";
+}
 function cc(){
     document.querySelector(".Main").style.animation="cc 10s";
     const music = new Audio('RGC.mp3');
