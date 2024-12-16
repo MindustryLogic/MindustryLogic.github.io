@@ -106,6 +106,22 @@ ul {
     90% {transform: translate(8px,-10px);}
     100% {transform: translate(0px,0px)}
  }
+
 #main{
     font-family: "Tinos", serif;
+}
+section#Structure h1{
+   font-size:x-large;
+}
+section#Structure h1 p{
+   font-size:medium;
+}
+section#Structure h2{
+   position:relative;
+   padding-left: 3%;
+}
+section#Structure h2 + p{
+   font-size:small;
+   position:relative;
+   padding-left:3%;
 }
