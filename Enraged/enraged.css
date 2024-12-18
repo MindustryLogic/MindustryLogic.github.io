@@ -3,9 +3,9 @@
 /*nuked*/
 .random_test{
   --ran-num: 0;
+  --loop-count:0;
   font-size: calc(50px * var(--ran-num));
 }
 .random_test::after{
-  --loop-count: 0;
   content: var(--loop-count);
 }
