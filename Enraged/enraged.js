@@ -1,9 +1,18 @@
 //really should nuke it
 //nuked time to rebuild
-let n = 0
-function loop_num(){
-    n+=1
-}
+let n = 0;
+const loop_count = setInterval(() => {
+    n++;
+},1000);
+//well that works
+//time to rewrite loop iteration count thing
+//const loop_set_func = setInterval(temp_sep,50,random_test,1000,10);
+const the_2nd = setInterval(random_test,1000);
+setTimeout(() => {
+    clearInterval(the_2nd);
+}, 10000);
+//this works idk how
+    
 function random_test(){
     var num = Math.random()
     console.log(num)
@@ -12,23 +21,14 @@ function random_test(){
         el.style.setProperty('--loop-count',n);
     })
 }
-function loop_set_func(a,b,c){
-    if (n < c) {
-    setInterval(a,b)
-    n += 1
-    console.log(n,"aaaaa")
-    document.getElementsByClassName('random_test').innerHTML = "hello world" , n
-    } else {
-        return(null)
-    }
-}
 let count = 0;
+let count_real = 0;
 const timer = setInterval(() => {
     count++;
-    console.log(count * 50 + 'ms');
+    count_real = count * 50;
 }, 50);
 
 // Optional: Stop timer after certain duration
-setTimeout(() => {
+/*setTimeout(() => {
     clearInterval(timer);
-}, 5000); // Stops after 5 seconds
+}, 5000); // Stops after 5 seconds */

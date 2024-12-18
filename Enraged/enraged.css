@@ -7,5 +7,6 @@
   font-size: calc(50px * var(--ran-num));
 }
 .random_test::after{
-  content: var(--loop-count);
+  counter-reset: loop var(--loop-count);
+  content: counter(loop);
 }
