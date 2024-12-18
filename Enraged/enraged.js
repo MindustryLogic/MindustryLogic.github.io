@@ -7,12 +7,13 @@ function random_test(){
         el.style.setProperty('--ran-num', num);
     })
 }
+let n = 0
 function loop_set_func(a,b,c){
-    var n = 0
     if (n < c) {
-    setInterval(a,b);
+    setInterval(a,b)
     n += 1
     console.log(n,"aaaaa")
+    document.getElementsByClassName('random_test').innerHTML = "hello world" , n
     } else {
         return(null)
     }
