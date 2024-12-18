@@ -5,8 +5,38 @@
   --ran-num: 0;
   --loop-count:0;
   font-size: calc(50px * var(--ran-num));
+  display:none;
 }
 .random_test::after{
   counter-reset: loop var(--loop-count);
   content: counter(loop);
+}
+.frame{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width:1920px;
+  height:1080px;
+  background-color: rgba(255,255,255,0);
+  border: 40px solid rgba(255,255,0,1);
+  z-index: top;
+}
+.inframe{
+  position: absolute;
+  top: 0px;
+  left:0px;
+  width:1920px;
+  height: 1080px;
+  background-color: rgba(127,255,212,1);
+  z-index: bottom;
+}
+.start{
+  position: relative;
+  margin: 50% 50%;
+  white-space: nowrap;
+  font-weight: bolder;
+  font-size: 50px;
+  font-family: 'Rubik Glitch', serif;
+  color:black;
+  text-shadow: 3px 3px 0px white,-3px 3px 0px white,-3px -3px 0px white,3px -3px 0px white;
 }
