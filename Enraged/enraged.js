@@ -4,6 +4,8 @@ let n = 0;
 const loop_count = setInterval(() => {
     n++;
 },1000);
+var RGC = new Audio('RGC.mp3');
+RGC.play();
 //well that works
 //time to rewrite loop iteration count thing
 //const loop_set_func = setInterval(temp_sep,50,random_test,1000,10);
@@ -33,7 +35,10 @@ let count = 0;
 let count_real = 0;
 const timer = setInterval(() => {
     count++;
-    count_real = count * 50;
+    count_real = count * 50
+    if ((count_real % 1000) === 0 ){
+        console.log(count_real + "ms")
+    }
 }, 50);
 
 // Optional: Stop timer after certain duration
