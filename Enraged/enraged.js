@@ -18,7 +18,7 @@ function startTitleShake(){
     fadeIn += 1;
     document.querySelectorAll('.start').forEach(el => {
         el.style.setProperty('--vert-shake',vert);
-        el.style.setProperty('--opac',fadeIn);
+        //el.style.setProperty('--opac',fadeIn);
     })
 }
 function random_test(){

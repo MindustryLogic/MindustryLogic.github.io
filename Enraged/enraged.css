@@ -36,24 +36,25 @@ svg {
 .start{
   display:flex;
   --vert-shake: 0;
-  --opac: 0.5;
+  --opac: 0;
   position: relative;
-  opacity: var(--opac,1);
   margin-top:calc(25vh + (1px * var(--vert-shake)));
   justify-content: center;
   white-space: nowrap;
-  font-weight: bolder;
+  font-weight: normal;
   font-size: 50px;
   font-family: 'Rubik Glitch', serif;
   color:black;
   text-shadow: 3px 3px 0px rgba(255,255,255,1),-3px 3px 0px white,-3px -3px 0px white,3px -3px 0px white;
-  animation: startFadeIn 10s forwards alternate;
+  animation: startFadeIn 10s linear 0s 1 normal forwards
 }
-.start::after{
+/*.start::after{
   counter-reset: test calc(var(--opac) * 0.5);
   content: counter(test);
-}
+}*/
 @keyframes startFadeIn{
-  from{ opacity: var(--opac);}
-  to { opacity: 1;}
+  0%{ opacity: 0};
+  30%{ opacity: 1};
+  90%{transform: translate(0px,0px)};
+  100%{transform: translate(200px,0px)};
 }/*did it work? idk really*/
