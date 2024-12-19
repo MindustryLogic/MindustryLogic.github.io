@@ -30,9 +30,14 @@
   background-color: rgba(127,255,212,1);
   z-index: bottom;
 }
+svg {
+  position:absolute;
+}
 .start{
+  display:flex;
   position: absolute;
-  margin: 50% 50%;
+  margin-left: 50%;
+  margin-right: 50%;
   white-space: nowrap;
   font-weight: bolder;
   font-size: 50px;
