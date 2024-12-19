@@ -30,6 +30,18 @@
   background-color: rgba(127,255,212,1);
   z-index: bottom;
 }
+p {
+  position: relative;
+  width:200px;
+}
+div {
+  position: relative;
+}
+svg {
+  position: absolute;
+  left:0;
+  top:0;
+}
 .start{
   position: relative;
   margin: 50% 50%;
