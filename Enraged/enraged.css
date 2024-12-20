@@ -50,13 +50,21 @@ svg {
   font-family: 'Rubik Glitch', serif;
   color:black;
   text-shadow: 3px 3px 0px rgba(255,255,255,1),-3px 3px 0px white,-3px -3px 0px white,3px -3px 0px white;
-  animation: startFadeIn 10s linear 0s 1 normal forwards;
-  animation-play-state: var(--kaboom);
+  -webkit-animation: startFadeIn 10s linear 0s 1 normal forwards;
+          animation: startFadeIn 10s linear 0s 1 normal forwards;
+  -webkit-animation-play-state: var(--kaboom);
+          animation-play-state: var(--kaboom);
 }
 /*.start::after{
   counter-reset: test calc(var(--opac) * 0.5);
   content: counter(test);
 }*/
+@-webkit-keyframes startFadeIn{
+  0%{opacity: 0};
+  30%{opacity: 1};
+  99%{transform: translate(0px,0px)};
+  100%{transform: translate(200%,0px) rotate(90deg)};
+}
 @keyframes startFadeIn{
   0%{opacity: 0};
   30%{opacity: 1};
