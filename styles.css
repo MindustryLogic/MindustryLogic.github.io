@@ -70,18 +70,18 @@
          }
       .fancy ul {
          list-style-type: none;
-         display: inline-grid;
+         display: inline-block;
          margin:0;
          padding:0;
          overflow:hidden;
-         background-color: #333
+         background-color: rgba(255,255,255,0)
       }
       .fancy li {
          float:left;
       }
       
       .fancy li a, .dropbtn {
-         display:inline-grid;
+         display:inline-block;
          text-align: center;
          color: white;
          padding: 14px 16px;
@@ -97,15 +97,15 @@
          display:none;
          padding: 0;
          position:sticky;
-         background-color:#333;
+         background-color: rgba(255,255,255,0);
       }
       .fancy, .dropdown-content a {
-         background-color:#111;
+         background-color:rgba(33,33,33,0);
          text-align:left;
          padding: 0;
       }
       .fancy, .dropdown-content a:hover {
-         background-color: #111;
+         background-color: rgba(33,33,33,1);
          margin: 0;
       }
       .fancy, .dropdown:hover .dropdown-content {
