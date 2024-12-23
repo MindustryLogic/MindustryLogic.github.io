@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
 /* i should just nuke it and rebuild*/
 /*nuked*/
+:root{
+--main-anim-ctrl:paused;
+}
 .random_test{
   --ran-num: 0;
   --loop-count:0;
   font-size: calc(50px * var(--ran-num));
   display:none;
-}
-.animctrl{
-  --kaboom: paused;
 }
 .random_test::after{
   counter-reset: loop var(--loop-count);
@@ -20,7 +20,7 @@
   top: 0px;
   left: 0px;
   width:calc(100vw - 80px);
-  height:56.26vh;
+  height:75vh;
   background-color: rgba(255,255,255,0);
   border: 40px solid rgba(255,255,0,1);
   z-index: top;
@@ -42,7 +42,7 @@ svg {
   --vert-shake: 0;
   --opac: 0;
   position: relative;
-  margin-top:calc(25vh + (1px * var(--vert-shake)));
+  margin-top:calc(33.33vh + (1px * var(--vert-shake)));
   justify-content: center;
   white-space: nowrap;
   font-weight: normal;
@@ -52,21 +52,21 @@ svg {
   text-shadow: 3px 3px 0px rgba(255,255,255,1),-3px 3px 0px white,-3px -3px 0px white,3px -3px 0px white;
   -webkit-animation: startFadeIn 10s linear 0s 1 normal forwards;
           animation: startFadeIn 10s linear 0s 1 normal forwards;
-  -webkit-animation-play-state: var(--kaboom);
-          animation-play-state: var(--kaboom);
+  -webkit-animation-play-state: var(--main-anim-ctrl);
+          animation-play-state: var(--main-anim-ctrl);
 }
 /*.start::after{
   counter-reset: test calc(var(--opac) * 0.5);
   content: counter(test);
 }*/
 @-webkit-keyframes startFadeIn{
-  0%{opacity: 0};
+  0%{opacity: 0.3};
   30%{opacity: 1};
   99%{transform: translate(0px,0px)};
   100%{transform: translate(200%,0px) rotate(90deg)};
 }
 @keyframes startFadeIn{
-  0%{opacity: 0};
+  0%{opacity: 0.3};
   30%{opacity: 1};
   99%{transform: translate(0px,0px)};
   100%{transform: translate(200%,0px) rotate(90deg)};

@@ -1,6 +1,10 @@
 //really should nuke it
 //nuked time to rebuild
+const play = false
 let n = 0;
+function beginTheChaos(){
+play = true;
+}//should maybe rethink this
 const loop_count = setInterval(() => {
     n++;
 },1000);
@@ -45,5 +49,3 @@ const timer = setInterval(() => {
 /*setTimeout(() => {
     clearInterval(timer);
 }, 5000); // Stops after 5 seconds */
-
-
