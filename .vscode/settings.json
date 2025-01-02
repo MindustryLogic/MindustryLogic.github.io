@@ -1,5 +1,8 @@
 {
     "liveServer.settings.port": 5503,
     "html.autoClosingTags": false,
-    "html.format.enable": false
+    "html.format.enable": false,
+    "html.autoCreateQuotes": false,
+    "svelte.plugin.html.completions.emmet": false,
+    "svelte.plugin.html.tagComplete.enable": false
 }
