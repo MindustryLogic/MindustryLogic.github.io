@@ -3,6 +3,7 @@
     "html.autoClosingTags": false,
     "html.format.enable": false,
     "html.autoCreateQuotes": false,
+    "editor.linkedEditing": false,
     "svelte.plugin.html.completions.emmet": false,
     "svelte.plugin.html.tagComplete.enable": false,
     "svelte.plugin.html.linkedEditing.enable": false
