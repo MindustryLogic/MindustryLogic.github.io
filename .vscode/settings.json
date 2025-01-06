@@ -1,6 +1,6 @@
 {
     "liveServer.settings.port": 5503,
-    "html.autoClosingTags": false,
+    "html.autoClosingTags": true,
     "html.format.enable": false,
     "html.autoCreateQuotes": false,
     "editor.linkedEditing": false,

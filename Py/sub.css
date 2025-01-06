@@ -47,12 +47,12 @@ ul {
  .fancy {
     font-family: 'Cutive Mono', monospace;
     font-size: 20px;
-    position: relative;
+   position: sticky;
     top: 5px;
     }
  .fancy ul {
     list-style-type: none;
-    display: inline-grid;
+    display: inline-flex;
     margin:0;
     padding:0;
     overflow:hidden;
@@ -63,7 +63,7 @@ ul {
  }
  
  .fancy li a, .dropbtn {
-    display:inline-grid;
+    display:inline-block;
     text-align: center;
     color: white;
     padding: 14px 16px;
