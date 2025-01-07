@@ -1,3 +1,6 @@
+:root{
+    --thing: 100;
+}
 ul{
     list-style-type: none;
     margin:0;
@@ -33,4 +36,16 @@ li a:hover, .dropdown:hover .dropbtn{
 }
 .dropdown:hover .dropdown-content{
     display:block
+}
+pattern #horiline {
+    width: 100%;
+}
+p::after{
+    counter-reset: uh var(--thing);
+    content: counter(uh);
+}
+.abtn{
+    position: fixed;
+    top:20px;
+    left:20px;
 }
