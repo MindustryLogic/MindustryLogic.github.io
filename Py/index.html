@@ -1,42 +1,11 @@
 <!DOCTYPE html>
 <title>Nav Hub</title>
 <link rel="icon" href="house.png" />
-
 <html>
-    <head><link rel="stylesheet" href="../styles.css"></head>
-<body>
-    <div class="top">This is a page</div>
-    <hr>
-    <ul>
-        <li><a href="/">Home Page</a></li>
-        <li><a class="active" href="/Py">Nav Hub</a></li>
-        <li><a href="https://github.com/MindustryLogic/Mindustry-Terraria-Overhaul">A mod</a></li>
-    </ul>
-    <div class="fancy">
-    <ul>
-        <li class="dropdown">
-            <a href="html" class="dropbtn">HTML</a>
-            <div class="dropdown-content">
-                <a href="/Py/html#Top">Top</a>
-                <a href="/Py/html#Structure">Structure</a>
-                <a href="#">Basic stuff</a>
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="xml" class="dropbtn">XML</a>
-            <div class="dropdown-content">
-                <a href="/Py/xml#Top">XML</a> 
-                <a href="/Py/xml#svg">SVG</a> 
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="tools/" class="dropbtn">Tools</a>
-                <div class="dropdown-content">
-                    <a href="/Py/tools">Stuff</a>
-                </div>
-        </li>
-    </ul>
-    </div>
+    <head><link rel="stylesheet" href="../styles.css">
+    <script src="/boilernav.js"></script></head>
+<body onload="page_path_check()">
+    <div id="navnav"></div>
     <form>
         <input type="button" value="click" onclick="moretest()" />
     </form>

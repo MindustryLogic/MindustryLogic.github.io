@@ -35,5 +35,3 @@ function beginChaos(){
         setTimeout(beginChaos,3000);
     }}
 }
-
-

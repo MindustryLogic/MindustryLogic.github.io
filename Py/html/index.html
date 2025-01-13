@@ -3,40 +3,10 @@
 <link rel="icon" href="html.svg" />
 
 <html>
-    <head><link rel="stylesheet" href="../sub.css"></head>
-    <body>
-        <div class="top">This is a page</div>
-        <hr>
-        <ul>
-            <li><a href="/">Home Page</a></li>
-            <li><a class="active" href="/Py">Nav Hub</a></li>
-            <li><a href="https://github.com/MindustryLogic/Mindustry-Terraria-Overhaul">A mod</a></li>
-        </ul>
-        <div class="fancy">
-        <ul>
-            <li class="dropdown">
-            <a href="/Py/html/index.html" class="dropbtn active">HTML</a>
-            <div class="dropdown-content">
-                <a href="#Top">Top</a>
-                <a href="#Structure">Structure</a>
-                <a href="#nerd">More advanced stuff</a>
-            </div>
-            </li>
-            <li class="dropdown">
-                <a href="/Py/xml/index.html" class="dropbtn">XML</a>
-                <div class="dropdown-content">
-                    <a href="/Py/xml#Top">XML</a> 
-                    <a href="/Py/xml#svg">SVG</a> 
-                </div>
-            </li>
-            <li class="dropdown">
-                <a href="tools/" class="dropbtn">Tools</a>
-                    <div class="dropdown-content">
-                        <a href="/Py/tools">Stuff</a>
-                    </div>
-            </li>
-        </ul>
-        </div>
+    <head><link rel="stylesheet" href="../sub.css">
+    <script src='/boilernav.js'></script></head>
+    <body onload="page_path_check()">
+        <div id='navnav'></div>
         <div id="main">
         <div id="Top">
             <section id="Top">
@@ -52,25 +22,25 @@
                 <h1>Structure or syntax</h1>
                 <hr>
                 order based on appear order
-                <h1>&#xFF1c;!DOCTYPE html&#xFF1e;Must include,1 per page</h1>
+                <h1>&#x003c;!DOCTYPE html&#x003e;Must include,1 per page</h1>
                 <p>The very first thing you'll see<br>It just tells the browser to render in "quirks mode"(whatever that means) and it just make it load faster</p>
-                <h1>&#xFF1c;title&#xFF1e;Must include,1 per page</h1>
+                <h1>&#x003c;title&#x003e;Must include,1 per page</h1>
                 <p>The title for ur page(thats it)</p>
-                <h1>&#xFF1c;link rel="icon" href="" /&#xFF1e;Can be excluded,1 per page</h1>
+                <h1>&#x003c;link rel="icon" href="" /&#x003e;Can be excluded,1 per page</h1>
                 <p>This will attempt to find a image in href="" and us it as icon.If find nothing a error is show in debugger(F12) and browser use default</p>
-                <h1>&#xFF1c;style&#xFF1e; or &#xFF1c;script&#xFF1e;Can be excluded,1 per page</h1>
+                <h1>&#x003c;style&#x003e; or &#x003c;script&#x003e;Can be excluded,1 per page</h1>
                 <p>This section is place for css if you don't want to use external css(and/or javascript)</p>
                 <hr>
                 <h2 style="font-size:20px;">Main Part</h2>
-                <h1>&#xFF1c;html&#xFF1e;Recommend to include,1 per page</h1>
+                <h1>&#x003c;html&#x003e;Recommend to include,1 per page</h1>
                 <p>This one <u><b>CAN</b></u> be excluded from source code.Usually paired with lang="" to specify language used</p>
-                <h1>&#xFF1c;head&#xFF1e;Should not but can be excluded,1 per page</h1>
+                <h1>&#x003c;head&#x003e;Should not but can be excluded,1 per page</h1>
                 <p>Contains metadata for the page,such as charset(character set used like utf-8)<br>Can also be used to jinx a css(like the source code of this page)</p>
-                <h2>&#xFF1c;body&#xFF1e;Must include,1 per page</h2>
+                <h2>&#x003c;body&#x003e;Must include,1 per page</h2>
                 <p>Where all the thing that will be show to people are included here.</p>
-                <h2>&#xFF1c;h1,h2...h6&#xFF1e;Optional,unlimited</h2>
+                <h2>&#x003c;h1,h2...h6&#x003e;Optional,unlimited</h2>
                 <p>Heading 1 to 6.The higher the number the bigger the text is</p>
-                <h2>&#xFF1c;p&#xFF1e;Optional,unlimited</h2>
+                <h2>&#x003c;p&#x003e;Optional,unlimited</h2>
                 <p>The paragraph indicator.It exist so that you can style a lot of text with 1 single css rule.</p>
             </section>
         </div>
