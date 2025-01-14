@@ -23,6 +23,8 @@ function beginChaos(){
         var bgMusic = new Audio('RGC.mp3');
         var music = document.querySelector("audio");
         music.addEventListener('play',console.log("it plays"));
+        let theButton = document.querySelector(".the-button");
+        theButton.style.setProperty("display",'none');
         bgMusic.play();
         const theShake = setInterval(startTitleShake,50);
         setTimeout(()=>{

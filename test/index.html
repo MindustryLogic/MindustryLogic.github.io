@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <title>Test</title>
 <html>
-    <head><link rel="stylesheet" href="styles.css"></head>
-    <body>
+    <head><link rel="stylesheet" href="styles.css" type="text/css"></head>
+    <body onload="grab_value_repeat()">
         <ul>
             <li><a href="#">Thing</a></li>
             <li class="dropdown">
@@ -29,8 +29,11 @@
           <div class="abtn">
             <form>
                 <input type="button" value="ya?" onclick="me_see_see()" />
+                <input type="range" id="brightness" name="brightness" min="0" max="100" />
+                <label for="brightness">brightness</label>
             </form>
           </div>
+          <div class="testblock"></div>
           <script src="wha.js"></script>
     </body>
 </html>

@@ -73,4 +73,5 @@ svg {
 }/*did it work? idk really*/
 .the-button{
   position: relative;
+  display: block;
 }
