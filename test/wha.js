@@ -13,7 +13,6 @@ const le_width = document.querySelectorAll("svg").forEach(ele => {
     thing.style.setProperty('-a-bright', alpha);
 });
 document.getElementById("the_lines").setAttribute('width',width_ig);
-
 function me_see_see(){
     console.log(guh.getAttribute("width"))
 };
@@ -22,6 +21,10 @@ function grab_value_repeat(){
     document.querySelector(":root").style.setProperty('--a-bright', alpha);
     setTimeout(grab_value_repeat,500);
 }
+
+fetch('./a.json')
+    .then((Response) => Response.json())
+    .then((json) => console.log(json))
 
 
 
