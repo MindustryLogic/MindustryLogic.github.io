@@ -12,6 +12,7 @@
   "author": "MindustryLogic",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "mysql": "^2.18.1"
   }
 }
