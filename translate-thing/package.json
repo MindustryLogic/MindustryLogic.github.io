@@ -1,0 +1,17 @@
+{
+  "name": "translate-thing",
+  "version": "1.0.0",
+  "description": "what",
+  "main": "language-conv.js",
+  "scripts": {
+    "test": "whomst had awakened the one"
+  },
+  "keywords": [
+    "translate"
+  ],
+  "author": "MindustryLogic",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
