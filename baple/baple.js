@@ -1,0 +1,1 @@
+const broWidth = window.innerWidth;
