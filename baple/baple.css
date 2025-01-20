@@ -1,6 +1,7 @@
 :root{
-    --supposed-height:720;
+    --window-height:720;
     --console-open:block;
+    --window-width:1080;
 }
 p {
     font-family: 'Times New Roman', Times, serif;
