@@ -1,3 +1,29 @@
 :root{
-    
+    --supposed-height:720;
+    --console-open:block;
+}
+p {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 900;
+}
+#HTMLconsole{
+    position:fixed;
+    bottom:0px;
+    justify-content:centre;
+    height:20%;
+    width:100%;
+    display:var(--console-open)
+}
+#HTMLconsole p{
+    margin-left:2.5%;
+}
+.theConsoleButton{
+    background-color:white;
+    position:fixed;
+    bottom:20%;
+    left:0%
+}
+#what::after{
+    counter-reset: console-state var(--console-open);
+    content:counter(console-state);
 }
