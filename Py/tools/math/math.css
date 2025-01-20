@@ -112,23 +112,18 @@ ul {
 }
 #mode-display{
     font-family:"Roboto Mono", serif;
+    position: relative;
 }
-#mode-display::after{
-    content:"unit-conversion";
-    display:inline-block;
-    background-color:aqua;
-}
-#mode-display li{
-    display:none;
-    position:relative;
-    background-color:blue;
-    border-style:solid;
-    border-width:5px;
-    border:black;
-}
-#mode-display li:hover{
-    display:block;
-}
+ .mode-menu {
+   display: none;
+   position: absolute;
+   background-color:cyan;
+   min-width: 160px;
+   z-index: 1;
+ }
+ #mode-display:hover .mode-menu{
+   display: block;
+ }
 #unit-conv{
     display:block;
     position:relative;
