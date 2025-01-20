@@ -39,6 +39,7 @@ function boilernav_but_navhub() {
         +        '<a href="/Py/tools" class="dropbtn">Tools</a>'
         +            '<div class="dropdown-content">'
         +                '<a href="/Py/tools">Stuff</a>'
+        +                '<a href="/Py/tools/math">Math thing</a>'
         +            '</div>'
         +    '</li>'
         +'</ul>'
