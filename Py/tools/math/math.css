@@ -110,9 +110,6 @@ ul {
 #main{
    font-family: 'Courier New', Courier, monospace;
 }
-#mode-sele{
-
-}
 #mode-display{
     font-family:"Roboto Mono", serif;
     position: absolute;
@@ -143,6 +140,24 @@ ul {
     height:50px;
     background-color:rgba(255,0,200,1);
     margin-top:10px;
+}
+#unit-conv button{
+   display:inline-block;
+   position: relative;
+   height:50px;
+   margin-left:5px;
+   margin-right:5px;
+   text-align: center;
+   color: wheat;
+   background-color: #f08;
+}
+#innerContent label{
+   display:inline-block;
+   width:9%;
+}
+#innerContent input{
+   width:9%;
+   display:inline-block;
 }
 #debug{
    font-family: "VT323", serif;

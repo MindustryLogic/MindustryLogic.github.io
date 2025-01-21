@@ -19,7 +19,14 @@
         </div>
         </div>
         <div id="unit-conv">
-
+            <button type="button" onclick="submode = 1">Temperature</button>
+            <button type="button" onclick="submode = 2">Length</button>
+        </div>
+        <div id="innerContent">
+            <label for="Celsius">°C(Celsius)</label>
+            <label for="Kelvin">K(Kelvin)</label><br>
+            <input type="number" id="Celsius" step="0.01" min="-273.15" />
+            <input type="number" id="Kelvin" step="0.01" min="0" /> 
         </div>
         <div id="debug">
         </div>
