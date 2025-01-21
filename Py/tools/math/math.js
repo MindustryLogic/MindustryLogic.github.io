@@ -10,23 +10,32 @@ function HTMLconsole(str){
     element.appendChild(para);
 }
 const Celsius = document.getElementById("Celsius");
-let DegreeC = 0;
-let K = 0;
 const Kelvin = document.getElementById("Kelvin");
-Celsius.addEventListener("keydown", function(event){
+const Fahrenheit = document.getElementById("Fahrenheit");
+Celsius.addEventListener("keydown", function fromCelsius (event){
     if (event.key === "Enter"){
         event.preventDefault();
-        const whatKey = Celsius.value;
-        DegreeC = whatKey
+        const whatKey = Number(Celsius.value);
         console.log(whatKey + "hey");
-        Kelvin.setAttribute("value", whatKey);
-    }
+        Kelvin.value = whatKey + 273.15;
+        Fahrenheit.value = (whatKey / (5 / 9) + 32);
+    };
 });
-Kelvin.addEventListener("keydown", function(event){
+Kelvin.addEventListener("keydown", function fromKelvin(event){
     if (event.key === "Enter"){
         event.preventDefault();
-        const whatKey = Kelvin.value;
-        K = whatKey;
+        const whatKey = Number(Kelvin.value);
         console.log(whatKey + "hey");
-    }
+        Celsius.value = (whatKey - 273.15);
+        Fahrenheit.value = ((whatKey-273.15)/ (5 / 9) + 32);
+    };
+});
+Fahrenheit.addEventListener("keydown", function fromFahrenheit(event){
+    if (event.key === "Enter"){
+        event.preventDefault();
+        const whatKey = Number(Fahrenheit.value);
+        console.log(whatKey + "hey");
+        Celsius.value = (whatKey - 32) * 5 / 9;
+        Kelvin.value = ((whatKey - 32) * 5 / 9)+273.15;
+    };
 });
