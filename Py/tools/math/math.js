@@ -9,7 +9,24 @@ function HTMLconsole(str){
     const element = document.getElementById("debug");
     element.appendChild(para);
 }
-function tempConvFromC(){
-let C = document.getElementById("Celsius");
-C.addEventListener(, alert("hi"));
-}
+const Celsius = document.getElementById("Celsius");
+let DegreeC = 0;
+let K = 0;
+const Kelvin = document.getElementById("Kelvin");
+Celsius.addEventListener("keydown", function(event){
+    if (event.key === "Enter"){
+        event.preventDefault();
+        const whatKey = Celsius.value;
+        DegreeC = whatKey
+        console.log(whatKey + "hey");
+        Kelvin.setAttribute("value", whatKey);
+    }
+});
+Kelvin.addEventListener("keydown", function(event){
+    if (event.key === "Enter"){
+        event.preventDefault();
+        const whatKey = Kelvin.value;
+        K = whatKey;
+        console.log(whatKey + "hey");
+    }
+});
