@@ -12,6 +12,7 @@ function HTMLconsole(str){
 const Celsius = document.getElementById("Celsius");
 const Kelvin = document.getElementById("Kelvin");
 const Fahrenheit = document.getElementById("Fahrenheit");
+const Rankine = document.getElementById("Rankine");
 Celsius.addEventListener("keydown", function fromCelsius (event){
     if (event.key === "Enter"){
         event.preventDefault();
@@ -19,6 +20,7 @@ Celsius.addEventListener("keydown", function fromCelsius (event){
         console.log(whatKey + "hey");
         Kelvin.value = whatKey + 273.15;
         Fahrenheit.value = (whatKey / (5 / 9) + 32);
+        Rankine.value = (whatKey / (5 / 9) + 32 + 459.67);
     };
 });
 Kelvin.addEventListener("keydown", function fromKelvin(event){
@@ -28,6 +30,7 @@ Kelvin.addEventListener("keydown", function fromKelvin(event){
         console.log(whatKey + "hey");
         Celsius.value = (whatKey - 273.15);
         Fahrenheit.value = ((whatKey-273.15)/ (5 / 9) + 32);
+        Rankine.value = ((whatKey-273.15)/ (5 / 9) + 32 + 459.67);
     };
 });
 Fahrenheit.addEventListener("keydown", function fromFahrenheit(event){
@@ -37,5 +40,15 @@ Fahrenheit.addEventListener("keydown", function fromFahrenheit(event){
         console.log(whatKey + "hey");
         Celsius.value = (whatKey - 32) * 5 / 9;
         Kelvin.value = ((whatKey - 32) * 5 / 9)+273.15;
+        Rankine.value = ((whatKey + 459.67));
     };
 });
+Rankine.addEventListener("keydown", function fromRankine(event){
+    if (event.key === "Enter"){
+        event.preventDefault();
+        const whatKey = Number(Rankine.value);
+        Celsius.value = ((whatKey - 32 - 459.67) * 5 / 9);
+        Kelvin.value = ((whatKey - 32 - 459.67) * 5 / 9 + 273.15);
+        Fahrenheit.value = ((whatKey - 459.67));
+    }
+})
