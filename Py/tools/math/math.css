@@ -153,10 +153,10 @@ ul {
 }
 #innerContent label{
    display:inline-block;
-   width:9%;
+   width:19.3vw;
 }
 #innerContent input{
-   width:9%;
+   width:19vw;
    display:inline-block;
 }
 #debug{

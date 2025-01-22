@@ -13,6 +13,7 @@ const Celsius = document.getElementById("Celsius");
 const Kelvin = document.getElementById("Kelvin");
 const Fahrenheit = document.getElementById("Fahrenheit");
 const Rankine = document.getElementById("Rankine");
+const Romer = document.getElementById("Romer");
 Celsius.addEventListener("keydown", function fromCelsius (event){
     if (event.key === "Enter"){
         event.preventDefault();
@@ -21,6 +22,7 @@ Celsius.addEventListener("keydown", function fromCelsius (event){
         Kelvin.value = whatKey + 273.15;
         Fahrenheit.value = (whatKey / (5 / 9) + 32);
         Rankine.value = (whatKey / (5 / 9) + 32 + 459.67);
+        Romer.value = (whatKey * 21/40  + 7.5);
     };
 });
 Kelvin.addEventListener("keydown", function fromKelvin(event){
@@ -31,6 +33,7 @@ Kelvin.addEventListener("keydown", function fromKelvin(event){
         Celsius.value = (whatKey - 273.15);
         Fahrenheit.value = ((whatKey-273.15)/ (5 / 9) + 32);
         Rankine.value = ((whatKey-273.15)/ (5 / 9) + 32 + 459.67);
+        Romer.value = ((whatKey - 237.15)  * 21/40 + 7.5);
     };
 });
 Fahrenheit.addEventListener("keydown", function fromFahrenheit(event){
@@ -41,6 +44,7 @@ Fahrenheit.addEventListener("keydown", function fromFahrenheit(event){
         Celsius.value = (whatKey - 32) * 5 / 9;
         Kelvin.value = ((whatKey - 32) * 5 / 9)+273.15;
         Rankine.value = ((whatKey + 459.67));
+        Romer.value = ((whatKey - 32)* 7/24 + 7.5);
     };
 });
 Rankine.addEventListener("keydown", function fromRankine(event){
@@ -50,5 +54,16 @@ Rankine.addEventListener("keydown", function fromRankine(event){
         Celsius.value = ((whatKey - 32 - 459.67) * 5 / 9);
         Kelvin.value = ((whatKey - 32 - 459.67) * 5 / 9 + 273.15);
         Fahrenheit.value = ((whatKey - 459.67));
+        Romer.value = ((whatKey -491.67)* 7/24 + 7.5);
+    }
+});
+Romer.addEventListener("keydown", function fromRomer(event){
+    if (event.key === "Enter"){
+        event.preventDefault();
+        const whatKey = Number(Romer.value);
+        Celsius.value = ((whatKey-7.5) * 40/21);
+        Kelvin.value = ((whatKey - 7.5) * 40/21 + 237.15);
+        Fahrenheit.value = ((whatKey -  7.5) * 24/7 + 32);
+        Rankine.value = ((whatKey - 7.5) * 24/7 + 419.67);
     }
 })
