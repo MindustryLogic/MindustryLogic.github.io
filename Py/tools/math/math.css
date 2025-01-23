@@ -156,7 +156,7 @@ ul {
    width:19.3vw;
 }
 #innerContent input{
-   width:19vw;
+   width: calc(19vw - 20px);
    display:inline-block;
 }
 #debug{
