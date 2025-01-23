@@ -9,11 +9,16 @@ function HTMLconsole(str){
     const element = document.getElementById("debug");
     element.appendChild(para);
 }
+const modeSwitchButtons = document.getElementById("modeSwitch");
+const subModeButtons = document.querySelectorAll("div#unit-conv");
 const Celsius = document.getElementById("Celsius");
 const Kelvin = document.getElementById("Kelvin");
 const Fahrenheit = document.getElementById("Fahrenheit");
 const Rankine = document.getElementById("Rankine");
 const Romer = document.getElementById("Romer");
+modeSwitchButtons.addEventListener("click", () => {
+    subModeButtons.innerHTML = "what";
+});
 Celsius.addEventListener("keydown", function fromCelsius (event){
     if (event.key === "Enter"){
         event.preventDefault();
@@ -66,4 +71,34 @@ Romer.addEventListener("keydown", function fromRomer(event){
         Fahrenheit.value = ((whatKey -  7.5) * 24/7 + 32);
         Rankine.value = ((whatKey - 7.5) * 24/7 + 419.67);
     }
-})
+});
+function TemperatureConvThing(){
+    return '<div id="innerContent">'
+        +   '<label for="Celsius">°C(Celsius)</label>'
+        +   '<label for="Kelvin">K(Kelvin)</label>'
+        +   '<label for="Fahrenheit">°F(Fahrenheit)</label>'
+        +   '<label for="Rankine">°Ra(Rankine)</label>'
+        +   '<label for="Romer">°Rø(Rømer)</label><br>'
+        +   '<input type="number" id="Celsius" name="Celsius" step="0.01" min="-273.15" />'
+        +   '<input type="number" id="Kelvin" name="Kelvin" step="0.01" min="0" />'
+        +   '<input type="number" id="Fahrenheit" name="Fahrenheit" step="0.01" min="-459.67" />'
+        +   '<input type="number" id="Rankine" name="Rankine" step="0.01" min="0" />'
+        +   '<input type="number" id="Romer" name="Romer" step="0.01" min="-135.9" />'
+        +'</div>'
+}
+function ModeSwitchThing(){
+    switch (mode){
+        case (1):/*Unit conversion*/
+            subModeButtons.innerHTML = "test";
+                case (1):/*Temperature conversion*/
+                    document.getElementById("innerContent").innerHTML = TemperatureConvThing();
+                    break;
+                case (2):/*Length conversion*/
+                    break;
+        case (2):/*I really don't know rn*/
+            switch(submode){
+                case (1):
+                    break;
+            }
+    }
+};/*yea there is a few placeholders*/

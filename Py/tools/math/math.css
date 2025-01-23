@@ -156,9 +156,11 @@ ul {
    width:19.3vw;
 }
 #innerContent input{
-   width: calc(19vw - 20px);
+   width: calc(18vw);
    display:inline-block;
-}
+   background-color:antiquewhite;
+   color:black;
+}/*The button have default margin!!!*/
 #debug{
    font-family: "VT323", serif;
    font-size: 10px;

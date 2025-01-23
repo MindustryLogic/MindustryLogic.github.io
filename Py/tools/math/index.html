@@ -10,17 +10,18 @@
         <div id="navnav"></div>
         <!--wow this is something useful-->
         <hr>
+
         <div class="main">
         Current mode: <div id="mode-display">Unit
             <div class="mode-menu">
-                <button type="button" onclick="HTMLconsole('hii')">Unit</button>
-                <button type="button" onclick="HTMLconsole('what')">Thing</button>
+                <button type="button" id="modeSwitch" onclick="mode = 1">Unit</button>
+                <button type="button" id="modeSwitch" onclick="mode = 2">Thing</button>
             </div>
         </div>
         </div>
         <div id="unit-conv">
-            <button type="button" onclick="submode = 1">Temperature</button>
-            <button type="button" onclick="submode = 2">Length</button>
+            <button type="button" id="modeSwitch" onclick="submode = 1">Not Temperature</button>
+            <button type="button" id="modeSwitch" onclick="submode = 2">Length</button>
         </div>
         <div id="innerContent">
             <label for="Celsius">°C(Celsius)</label>
