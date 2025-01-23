@@ -1,39 +1,14 @@
 <!DOCTYPE html>
-<title>Test</title>
+<title>test</title>
 <html>
-    <head><link rel="stylesheet" href="styles.css" type="text/css"></head>
-    <body onload="grab_value_repeat()">
-        <ul>
-            <li><a href="#">Thing</a></li>
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
-                <div class="dropdown-content">
-                    <a href="#">stuff</a>
-                </div>
-            </li>
-        </ul>
-        <svg id="aaa" xmlns="https://www.w3.org/2000/svg" width="70" height="2160" viewBox="0 0 70 2160">
-            <defs>
-              <pattern id="a" width="100" height="240" patternUnits="userSpaceOnUse">
-                <path fill="#fff" stroke="#000" d="M0 0h50v20H0v20h50v20H0v20h50v20H0v20h50v40H0v20h50v20H0v20h50v20H0z"/>
-                <path fill="#000" stroke="#000" d="M0 20h50v20H0v20h50v20H0v20h50v20H0v40h50v20H0v20h50v20H0z"/>
-              </pattern>
-              <pattern id="guh" width="100" height="20" patternUnits="userSpaceOnUse">
-                <line id="aline" x1="0" y1="20" x2="100%" y2="20" stroke="#000" stroke-width="2px" />
-              </pattern>
-            </defs>
-            <path stroke="#000" stroke-width="0px" fill="url(#a)" d="M0 0h50v2160H0z"/>
-            <rect id="the_lines" fill="url(#guh)" width="100" height="2160" />
-          </svg>
-          <p> hi </p>
-          <div class="abtn">
-            <form>
-                <input type="button" value="ya?" onclick="me_see_see()" />
-                <input type="range" id="brightness" name="brightness" min="0" max="100" />
-                <label for="brightness">brightness</label>
-            </form>
-          </div>
-          <div class="testblock"></div>
-          <script src="wha.js"></script>
+    <head>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <!--testing for console in html(aka no F12)-->
+        hi<br>
+        <input type="text" id="stuff" name="stuff" placeholder="put something here" /> 
+        <div id="Console"></div>
+        <script src="wha.js"></script>
     </body>
 </html>
