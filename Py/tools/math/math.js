@@ -1,5 +1,12 @@
 let mode = 1;
 let submode = 1;
+async function CALLTHEJSON(){
+    const grabbed = await fetch("words.json");
+    const grabbedWords = await grabbed.json();
+    window.wordArrays = Object.values(grabbedWords);
+}
+CALLTHEJSON();
+HTMLconsole("wordArrays")
 function HTMLconsole(str){
     console.log("ye");
     const leString = new String(str);
@@ -9,8 +16,8 @@ function HTMLconsole(str){
     const element = document.getElementById("debug");
     element.appendChild(para);
 }
-const modeSwitchButtons = document.getElementById("modeSwitch");
-const subModeButtons = document.querySelectorAll("div#unit-conv buttons");
+const modeSwitchButtons = document.querySelectorAll("button#modeSwitch");
+const subModeButtons = document.querySelectorAll("div#unit-conv button");
 const Celsius = document.getElementById("Celsius");
 const Kelvin = document.getElementById("Kelvin");
 const Fahrenheit = document.getElementById("Fahrenheit");
@@ -18,9 +25,7 @@ const Rankine = document.getElementById("Rankine");
 const Romer = document.getElementById("Romer");
 HTMLconsole(subModeButtons);
 //TODO:Find out how to swap the html
-modeSwitchButtons.addEventListener("click", () => {
-    subModeButtons.innerHTML = "what";
-});/*Put on hold i can't think again*/
+// /*Put on hold i can't think again*/
 Celsius.addEventListener("keydown", function fromCelsius (event){
     if (event.key === "Enter"){
         event.preventDefault();
