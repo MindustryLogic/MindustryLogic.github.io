@@ -1,12 +1,13 @@
-let mode = 1;
-let submode = 1;
+let mode = 0;
+let submode = 0;
+let fromJSON = [];
 async function CALLTHEJSON(){
     const grabbed = await fetch("words.json");
     const grabbedWords = await grabbed.json();
-    window.wordArrays = Object.values(grabbedWords);
+    const wordArrays = Object.values(grabbedWords);
+    fromJSON = wordArrays[mode];
 }
 CALLTHEJSON();
-HTMLconsole("wordArrays")
 function HTMLconsole(str){
     console.log("ye");
     const leString = new String(str);
@@ -23,9 +24,18 @@ const Kelvin = document.getElementById("Kelvin");
 const Fahrenheit = document.getElementById("Fahrenheit");
 const Rankine = document.getElementById("Rankine");
 const Romer = document.getElementById("Romer");
-HTMLconsole(subModeButtons);
+var i = 0;
+window.addEventListener('DOMContentLoaded', (event) =>{
+    modeSwitchButtons.forEach(button => button.addEventListener("click", function(){
+        CALLTHEJSON();
+        console.log(mode + "this is mode num");
+        console.log(submode + "this is submode num");
+        console.log(fromJSON);
+    }))
+})
 //TODO:Find out how to swap the html
-// /*Put on hold i can't think again*/
+// Put on hold i can't think again
+
 Celsius.addEventListener("keydown", function fromCelsius (event){
     if (event.key === "Enter"){
         event.preventDefault();
@@ -95,17 +105,22 @@ function TemperatureConvThing(){
 }
 function ModeSwitchThing(){
     switch (mode){
-        case (1):/*Unit conversion*/
+        case (0):/*Unit conversion*/
+            console.log(mode);
             subModeButtons.innerHTML = "test";
-                case (1):/*Temperature conversion*/
+                case (0):/*Temperature conversion*/
                     document.getElementById("innerContent").innerHTML = TemperatureConvThing();
+                    console.log('uh temp');
+                    console.log(submode);
                     break;
-                case (2):/*Length conversion*/
+                case (1):/*Length conversion*/
+                    console.log('uh length')
                     break;
-        case (2):/*I really don't know rn*/
+        case (1):/*I really don't know rn*/
             switch(submode){
-                case (1):
+                case (0):
                     break;
             }
     }
 };/*yea there is a few placeholders*/
+/*Completely pointless stuff here*/
