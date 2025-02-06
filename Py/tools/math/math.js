@@ -35,8 +35,12 @@ window.addEventListener('DOMContentLoaded', (event) =>{
 })
 //TODO:Find out how to swap the html
 //or should i just like hide it
-modeSwitchButtons.addEventListener("click",ModeSwitchThing());
-subModeButtons.addEventListener("click",ModeSwitchThing());
+modeSwitchButtons.addEventListener("click",function(event){
+    ModeSwitchThing();
+});
+subModeButtons.addEventListener("click",function(event){
+    ModeSwitchThing();
+});
 // Put on hold i can't think again
 Celsius.addEventListener("keydown", function fromCelsius (event){
     if (event.key === "Enter"){
@@ -115,9 +119,10 @@ function ModeSwitchThing(){
         case (0):/*Unit conversion*/
             console.log(mode);
             subModeButtons.innerHTML = "test";
+            switch (submode){
                 case (0):/*Temperature conversion*/
                     document.getElementById("innerContent").innerHTML = TemperatureConvThing();
-                    
+                    document.getElementById("modeThing").innerHTML = "AA";
                     console.log('uh temp');
                     console.log(submode);
                     break;
@@ -125,6 +130,8 @@ function ModeSwitchThing(){
                     console.log('uh length');
                     document.getElementById("innerContent").innerHTML = modeSwitchPlaceholder();
                     break;
+            }
+            break;//basically break everything
         case (1):/*I really don't know rn*/
             switch(submode){
                 case (0):
@@ -134,6 +141,5 @@ function ModeSwitchThing(){
             }
     }
 };/*yea there is a few placeholders*/
-const ugh = document.getElementById("modeThing").innerText = mode + "AA" + submode;
-//AAAAAAAAAAAAAAA
+//i honestly have no idea is it working or not
 /*Completely pointless stuff here*/
