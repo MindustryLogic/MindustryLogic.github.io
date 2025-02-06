@@ -34,8 +34,10 @@ window.addEventListener('DOMContentLoaded', (event) =>{
     }))
 })
 //TODO:Find out how to swap the html
+//or should i just like hide it
+modeSwitchButtons.addEventListener("click",ModeSwitchThing());
+subModeButtons.addEventListener("click",ModeSwitchThing());
 // Put on hold i can't think again
-
 Celsius.addEventListener("keydown", function fromCelsius (event){
     if (event.key === "Enter"){
         event.preventDefault();
@@ -102,7 +104,12 @@ function TemperatureConvThing(){
         +   '<input type="number" id="Rankine" name="Rankine" step="0.01" min="0" />'
         +   '<input type="number" id="Romer" name="Romer" step="0.01" min="-135.9" />'
         +'</div>'
-}
+};
+function modeSwitchPlaceholder(){
+    return '<div id="innerContent">'
+    +    '<p>Hi i guess</p>'
+    +'</div>'
+};
 function ModeSwitchThing(){
     switch (mode){
         case (0):/*Unit conversion*/
@@ -110,17 +117,23 @@ function ModeSwitchThing(){
             subModeButtons.innerHTML = "test";
                 case (0):/*Temperature conversion*/
                     document.getElementById("innerContent").innerHTML = TemperatureConvThing();
+                    
                     console.log('uh temp');
                     console.log(submode);
                     break;
                 case (1):/*Length conversion*/
-                    console.log('uh length')
+                    console.log('uh length');
+                    document.getElementById("innerContent").innerHTML = modeSwitchPlaceholder();
                     break;
         case (1):/*I really don't know rn*/
             switch(submode){
                 case (0):
+                    modeSwitchPlaceholder();
+                    console.log("uhh");
                     break;
             }
     }
 };/*yea there is a few placeholders*/
+const ugh = document.getElementById("modeThing").innerText = mode + "AA" + submode;
+//AAAAAAAAAAAAAAA
 /*Completely pointless stuff here*/
