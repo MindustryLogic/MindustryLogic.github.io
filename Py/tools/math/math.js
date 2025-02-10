@@ -95,6 +95,8 @@ Romer.addEventListener("keydown", function fromRomer(event){
         Rankine.value = ((whatKey - 7.5) * 24/7 + 419.67);
     }
 });
+//i need to banish a few things and start some reduced test case guh
+/*
 function TemperatureConvThing(){
     return '<div id="innerContent">'
         +   '<label for="Celsius">°C(Celsius)</label>'
@@ -116,23 +118,23 @@ function modeSwitchPlaceholder(){
 };
 function ModeSwitchThing(){
     switch (mode){
-        case (0):/*Unit conversion*/
+        case (0)://Unit conversion
             console.log(mode);
             subModeButtons.innerHTML = "test";
             switch (submode){
-                case (0):/*Temperature conversion*/
+                case (0)://Temperature conversion
                     document.getElementById("innerContent").innerHTML = TemperatureConvThing();
                     document.getElementById("modeThing").innerHTML = "AA";
                     console.log('uh temp');
                     console.log(submode);
                     break;
-                case (1):/*Length conversion*/
+                case (1)://Length conversion
                     console.log('uh length');
                     document.getElementById("innerContent").innerHTML = modeSwitchPlaceholder();
                     break;
             }
             break;//basically break everything
-        case (1):/*I really don't know rn*/
+        case (1)://I really don't know rn
             switch(submode){
                 case (0):
                     modeSwitchPlaceholder();
@@ -140,6 +142,25 @@ function ModeSwitchThing(){
                     break;
             }
     }
-};/*yea there is a few placeholders*/
+};*/
+/*yea there is a few placeholders*/
 //i honestly have no idea is it working or not
-/*Completely pointless stuff here*/
+/*RTC stuff here*/
+let RTC = false;
+HTMLconsole(typeof RTC);
+function RTCReplace(){
+    return'<div id="RTC">HEY'
+    +    '<button type="button" id="RCTInvoke" onclick="RTC = true;RTCFunc()">Invoke RTC and current RTC</button>'
+    +    '<p>E</p>'
+    +'</div>'
+};
+const RTCMain = RTCFunc();
+function RTCFunc(){
+    if(RTC === false){
+        return(0);
+    }else{
+        document.getElementById("RTC").innerHTML = RTCReplace();
+    }
+}
+console.log("I can't use replace with a button that is included in the replace?");
+
