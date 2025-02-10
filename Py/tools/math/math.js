@@ -33,14 +33,9 @@ window.addEventListener('DOMContentLoaded', (event) =>{
         console.log(fromJSON);
     }))
 })
+ModeSwitchThing();
 //TODO:Find out how to swap the html
 //or should i just like hide it
-modeSwitchButtons.addEventListener("click",function(event){
-    ModeSwitchThing();
-});
-subModeButtons.addEventListener("click",function(event){
-    ModeSwitchThing();
-});
 // Put on hold i can't think again
 Celsius.addEventListener("keydown", function fromCelsius (event){
     if (event.key === "Enter"){
@@ -96,7 +91,7 @@ Romer.addEventListener("keydown", function fromRomer(event){
     }
 });
 //i need to banish a few things and start some reduced test case guh
-/*
+
 function TemperatureConvThing(){
     return '<div id="innerContent">'
         +   '<label for="Celsius">°C(Celsius)</label>'
@@ -142,7 +137,7 @@ function ModeSwitchThing(){
                     break;
             }
     }
-};*/
+};
 /*yea there is a few placeholders*/
 //i honestly have no idea is it working or not
 /*RTC (reduced test case) stuff here*/
@@ -159,14 +154,13 @@ function RTCReplace2(){
     +    '<button type="button" id="RTCInvoke" onclick="RTCFunc();">RTC invoked</button>'
     +'</div>'
 }
-document.getElementById("c").addEventListener("click", ()=>{alert("hi")});
+document.getElementById("c").addEventListener("click", RTCFunc);
 function RTCFunc(){
-    alert("hi");
-    /*if(test == 0){
+    if(test == 0){
         document.getElementById("RTC").innerHTML = RTCReplace1();
     }else{
         document.getElementById("RTC").innerHTML = RTCReplace2();
-    }*/
+    }
 };//i have no idea why isn't it working - it's RTC boolean fault - actually no the if thing don't want to work with my button i even use addEventListener and it will not work still
 console.log("I can't use replace with a button that is included in the replace?");
 
