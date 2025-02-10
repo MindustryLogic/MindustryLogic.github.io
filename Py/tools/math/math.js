@@ -145,22 +145,28 @@ function ModeSwitchThing(){
 };*/
 /*yea there is a few placeholders*/
 //i honestly have no idea is it working or not
-/*RTC stuff here*/
-let RTC = false;
-HTMLconsole(typeof RTC);
-function RTCReplace(){
+/*RTC (reduced test case) stuff here*/
+let RTC = Boolean();
+RTC = true;
+let test = 0;
+function RTCReplace1(){
     return'<div id="RTC">HEY'
-    +    '<button type="button" id="RCTInvoke" onclick="RTC = true;RTCFunc()">Invoke RTC and current RTC</button>'
-    +    '<p>E</p>'
+    +    '<button type="button" id="RCTInvoke" onclick="RTCFunc()">RTC invoked</button>'
     +'</div>'
 };
-const RTCMain = RTCFunc();
-function RTCFunc(){
-    if(RTC === false){
-        return(0);
-    }else{
-        document.getElementById("RTC").innerHTML = RTCReplace();
-    }
+function RTCReplace2(){
+    return'<div id="RTC">TWO'
+    +    '<button type="button" id="RTCInvoke" onclick="RTCFunc();">RTC invoked</button>'
+    +'</div>'
 }
+document.getElementById("c").addEventListener("click", ()=>{alert("hi")});
+function RTCFunc(){
+    alert("hi");
+    /*if(test == 0){
+        document.getElementById("RTC").innerHTML = RTCReplace1();
+    }else{
+        document.getElementById("RTC").innerHTML = RTCReplace2();
+    }*/
+};//i have no idea why isn't it working - it's RTC boolean fault - actually no the if thing don't want to work with my button i even use addEventListener and it will not work still
 console.log("I can't use replace with a button that is included in the replace?");
 
