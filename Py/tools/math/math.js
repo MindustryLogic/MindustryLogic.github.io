@@ -26,6 +26,7 @@ const Rankine = document.getElementById("Rankine");
 const Romer = document.getElementById("Romer");
 var i = 0;
 window.addEventListener('DOMContentLoaded', (event) =>{
+    event.preventDefault();
     modeSwitchButtons.forEach(button => button.addEventListener("click", function(){
         CALLTHEJSON();
         console.log(mode + "this is mode num");
@@ -33,7 +34,6 @@ window.addEventListener('DOMContentLoaded', (event) =>{
         console.log(fromJSON);
     }))
 })
-ModeSwitchThing();
 //TODO:Find out how to swap the html
 //or should i just like hide it
 // Put on hold i can't think again
