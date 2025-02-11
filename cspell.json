@@ -6,6 +6,7 @@
     "words": [],
     "ignoreWords": [
         "Romer",
-        "submode"],
+        "submode",
+        "Rømer"],
     "import": []
 }
