@@ -19,6 +19,7 @@ function HTMLconsole(str){
 }
 const modeSwitchButtons = document.querySelectorAll("button#modeSwitch");
 const subModeButtons = document.querySelectorAll("div#unit-conv button");
+const modeDisplay = document.getElementById("mode-display").innerText;
 const Celsius = document.getElementById("Celsius");
 const Kelvin = document.getElementById("Kelvin");
 const Fahrenheit = document.getElementById("Fahrenheit");
@@ -113,31 +114,16 @@ function modeSwitchPlaceholder(){
 };
 function ModeSwitchThing(){
     switch (mode){
-        case (0)://Unit conversion
-            console.log(mode);
-            subModeButtons.innerHTML = "test";
+        case (0):{
             switch (submode){
-                case (0)://Temperature conversion
-                    document.getElementById("innerContent").innerHTML = TemperatureConvThing();
-                    document.getElementById("modeThing").innerHTML = "AA";
-                    console.log('uh temp');
-                    console.log(submode);
+                case (0):{
+                    console.log("E");
                     break;
-                case (1)://Length conversion
-                    console.log('uh length');
-                    document.getElementById("innerContent").innerHTML = modeSwitchPlaceholder();
-                    break;
-            }
-            break;//basically break everything
-        case (1)://I really don't know rn
-            switch(submode){
-                case (0):
-                    modeSwitchPlaceholder();
-                    console.log("uhh");
-                    break;
-            }
+                }
+            }break;
+        }
     }
-};
+}
 /*yea there is a few placeholders*/
 //i honestly have no idea is it working or not
 /*RTC (reduced test case) stuff here*/
