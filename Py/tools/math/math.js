@@ -6,6 +6,9 @@ async function CALLTHEJSON(){
     const grabbedWords = await grabbed.json();
     const wordArrays = Object.values(grabbedWords);
     fromJSON = wordArrays[mode];
+    HTMLconsole(fromJSON);
+    fromJSON = wordArrays["modes"];
+    HTMLconsole(fromJSON);
 }
 CALLTHEJSON();
 function HTMLconsole(str){
@@ -19,76 +22,67 @@ function HTMLconsole(str){
 }
 const modeSwitchButtons = document.querySelectorAll("button#modeSwitch");
 const subModeButtons = document.querySelectorAll("div#unit-conv button");
-const modeDisplay = document.getElementById("mode-display").innerText;
+const modeDisplay = document.querySelector("div#mode-display p");
 const Celsius = document.getElementById("Celsius");
 const Kelvin = document.getElementById("Kelvin");
 const Fahrenheit = document.getElementById("Fahrenheit");
 const Rankine = document.getElementById("Rankine");
 const Romer = document.getElementById("Romer");
-var i = 0;
 window.addEventListener('DOMContentLoaded', (event) =>{
     event.preventDefault();
-    modeSwitchButtons.forEach(button => button.addEventListener("click", function(){
+    modeSwitchButtons.forEach(button => button.addEventListener("click", function () {
         CALLTHEJSON();
         console.log(mode + "this is mode num");
         console.log(submode + "this is submode num");
         console.log(fromJSON);
+        setTimeout(() => { for (let i = 0; i < fromJSON.length; i++) { subModeButtons[i].textContent = fromJSON[i]; } }, 100);//This thingy here need to click 2 times probably due to getting the words from a JSON is async and it does not sync ig
+    }));
+    subModeButtons.forEach(button => button.addEventListener("click", function () {
+        
     }))
 })
 //TODO:Find out how to swap the html
 //or should i just like hide it
 // Put on hold i can't think again
-Celsius.addEventListener("keydown", function fromCelsius (event){
-    if (event.key === "Enter"){
+const temperatureInputs = document.getElementById('innerContent');
+
+temperatureInputs.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
         event.preventDefault();
-        const whatKey = Number(Celsius.value);
-        console.log(whatKey + "hey");
-        Kelvin.value = whatKey + 273.15;
-        Fahrenheit.value = (whatKey / (5 / 9) + 32);
-        Rankine.value = (whatKey / (5 / 9) + 32 + 459.67);
-        Romer.value = (whatKey * 21/40  + 7.5);
-    };
-});
-Kelvin.addEventListener("keydown", function fromKelvin(event){
-    if (event.key === "Enter"){
-        event.preventDefault();
-        const whatKey = Number(Kelvin.value);
-        console.log(whatKey + "hey");
-        Celsius.value = (whatKey - 273.15);
-        Fahrenheit.value = ((whatKey-273.15)/ (5 / 9) + 32);
-        Rankine.value = ((whatKey-273.15)/ (5 / 9) + 32 + 459.67);
-        Romer.value = ((whatKey - 237.15)  * 21/40 + 7.5);
-    };
-});
-Fahrenheit.addEventListener("keydown", function fromFahrenheit(event){
-    if (event.key === "Enter"){
-        event.preventDefault();
-        const whatKey = Number(Fahrenheit.value);
-        console.log(whatKey + "hey");
-        Celsius.value = (whatKey - 32) * 5 / 9;
-        Kelvin.value = ((whatKey - 32) * 5 / 9)+273.15;
-        Rankine.value = ((whatKey + 459.67));
-        Romer.value = ((whatKey - 32)* 7/24 + 7.5);
-    };
-});
-Rankine.addEventListener("keydown", function fromRankine(event){
-    if (event.key === "Enter"){
-        event.preventDefault();
-        const whatKey = Number(Rankine.value);
-        Celsius.value = ((whatKey - 32 - 459.67) * 5 / 9);
-        Kelvin.value = ((whatKey - 32 - 459.67) * 5 / 9 + 273.15);
-        Fahrenheit.value = ((whatKey - 459.67));
-        Romer.value = ((whatKey -491.67)* 7/24 + 7.5);
-    }
-});
-Romer.addEventListener("keydown", function fromRomer(event){
-    if (event.key === "Enter"){
-        event.preventDefault();
-        const whatKey = Number(Romer.value);
-        Celsius.value = ((whatKey-7.5) * 40/21);
-        Kelvin.value = ((whatKey - 7.5) * 40/21 + 237.15);
-        Fahrenheit.value = ((whatKey -  7.5) * 24/7 + 32);
-        Rankine.value = ((whatKey - 7.5) * 24/7 + 419.67);
+        const targetId = event.target.id;
+        const whatKey = Number(event.target.value);
+        switch (targetId) {
+            case 'Celsius':
+                Kelvin.value = whatKey + 273.15;
+                Fahrenheit.value = (whatKey * 9/5) + 32;
+                Rankine.value = (whatKey * 9/5) + 491.67;
+                Romer.value = (whatKey * 21/40) + 7.5;
+                break;
+            case 'Kelvin':
+                Celsius.value = whatKey - 273.15;
+                Fahrenheit.value = (whatKey - 273.15) * 9/5 + 32;
+                Rankine.value = (whatKey * 9/5);
+                Romer.value = (whatKey - 273.15) * 21/40 + 7.5;
+                break;
+            case 'Fahrenheit':
+                Celsius.value = (whatKey - 32) * 5/9;
+                Kelvin.value = (whatKey - 32) * 5/9 + 273.15;
+                Rankine.value = whatKey + 459.67;
+                Romer.value = (whatKey - 32) * 7/24 + 7.5;
+                break;
+            case 'Rankine':
+                Celsius.value = (whatKey - 491.67) * 5/9;
+                Kelvin.value = whatKey * 5/9;
+                Fahrenheit.value = whatKey - 459.67;
+                Romer.value = (whatKey - 491.67) * 7/24 + 7.5;
+                break;
+            case 'Romer':
+                Celsius.value = (whatKey - 7.5) * 40/21;
+                Kelvin.value = (whatKey - 7.5) * 40/21 + 273.15;
+                Fahrenheit.value = (whatKey - 7.5) * 24/7 + 32;
+                Rankine.value = (whatKey - 7.5) * 24/7 + 491.67;
+                break;
+        }
     }
 });
 //i need to banish a few things and start some reduced test case guh
@@ -107,25 +101,7 @@ function TemperatureConvThing(){
         +   '<input type="number" id="Romer" name="Romer" step="0.01" min="-135.9" />'
         +'</div>'
 };
-function modeSwitchPlaceholder(){
-    return '<div id="innerContent">'
-    +    '<p>Hi i guess</p>'
-    +'</div>'
-};
-function ModeSwitchThing(){
-    switch (mode){
-        case (0):{
-            switch (submode){
-                case (0):{
-                    console.log("E");
-                    break;
-                }
-            }break;
-        }
-    }
-}
-/*yea there is a few placeholders*/
-//i honestly have no idea is it working or not
+//i think its working
 /*RTC (reduced test case) stuff here*/
 let RTC = Boolean();
 RTC = true;
@@ -147,6 +123,6 @@ function RTCFunc(){
     }else{
         document.getElementById("RTC").innerHTML = RTCReplace2();
     }
-};//i have no idea why isn't it working - it's RTC boolean fault - actually no the if thing don't want to work with my button i even use addEventListener and it will not work still
+};//i have no idea why isn't it working - it's RTC boolean fault - actually no the if thing don't want to work with my button i even use addEventListener and it will not work still - turns out pause on exception is the problem
 console.log("I can't use replace with a button that is included in the replace?");
 

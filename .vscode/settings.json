@@ -6,5 +6,6 @@
     "editor.linkedEditing": false,
     "svelte.plugin.html.completions.emmet": false,
     "svelte.plugin.html.tagComplete.enable": false,
-    "svelte.plugin.html.linkedEditing.enable": false
+    "svelte.plugin.html.linkedEditing.enable": false,
+    "editor.formatOnType": true
 }

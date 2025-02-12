@@ -8,6 +8,11 @@
     "idk":[
         "Thing1",
         "Thing2",
-        "Thing3"
+        "Thing3",
+        "Thing4"
+    ],
+    "modes":[
+        "Unit",
+        "Thing"
     ]
 }
