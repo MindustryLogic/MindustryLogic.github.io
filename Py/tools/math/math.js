@@ -6,7 +6,7 @@ async function CALLTHEJSON(){
     const grabbedWords = await grabbed.json();
     const wordArrays = Object.values(grabbedWords);
     fromJSON = wordArrays[mode];
-    HTMLconsole(fromJSON);
+    console.log(fromJSON);
 }
 CALLTHEJSON();
 function HTMLconsole(str){
@@ -55,6 +55,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 case 1:
                     ConvPlace.innerHTML = LengthConvThing();
                     HowManyStuffInConv = document.querySelectorAll("#innerContent input").length;//seems like it isn't working
+                    CalcForWidthOfConvThingCusInputHasMarginButNowItPixel = vw / HowManyStuffInConv - 7;
+                    document.querySelectorAll("#innerContent input, #innerContent label").forEach(slot => slot.style.width = CalcForWidthOfConvThingCusInputHasMarginButNowItPixel + "px");
+                    break;
+                case 2:
+                    ConvPlace.innerHTML = AreaConvThing();
+                    HowManyStuffInConv = document.querySelectorAll("#innerContent input").length;
                     CalcForWidthOfConvThingCusInputHasMarginButNowItPixel = vw / HowManyStuffInConv - 7;
                     document.querySelectorAll("#innerContent input, #innerContent label").forEach(slot => slot.style.width = CalcForWidthOfConvThingCusInputHasMarginButNowItPixel + "px");
                     break;
@@ -113,6 +119,12 @@ function Conv(event) {
             case 'Kmeter':
                 Meter.value = whatKey * 1000;
                 break;
+            case 'cm2':
+                m2.value = whatKey / (100 * 100 * 100);
+                break;
+            case 'm2':
+                cm2.value = whatKey * (100 * 100 * 100);
+                break;
         }//yep length part did not work.probably need to refresh targetId(successfully did it)
     }
 };
@@ -138,6 +150,15 @@ function LengthConvThing() {
         + '<br>'
         + '<input type="number" id="Meter" name="Meter"  min="0" />'
         + '<input type="number" id="Kmeter" name="Kmeter"  min="0"/> '//Unterminated string literal everyone
+    + '</div>'
+}
+function AreaConvThing() {
+    return '<div id="innerContent">'
+        + '<label for="cm2">cm^2(Centimeter)</label>'
+        + '<label for="m2">m^2(Meter)</label>'
+        + '<br>'
+        + '<input type="number" id="cm2" name="cm2" min="0" />' 
+        + '<input type="number" id="m2" name="m2" min="0" />'
     + '</div>'
 }
 function PlaceholderForConv() {
