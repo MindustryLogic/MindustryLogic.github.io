@@ -70,40 +70,56 @@ ConvInput.addEventListener('keydown', function(event) {
         event.preventDefault();
         const targetId = event.target.id;
         const whatKey = Number(event.target.value);
-            switch (targetId) {
-                case 'Celsius':
-                    Kelvin.value = whatKey + 273.15;
-                    Fahrenheit.value = (whatKey * 9 / 5) + 32;
-                    Rankine.value = (whatKey * 9 / 5) + 491.67;
-                    Romer.value = (whatKey * 21 / 40) + 7.5;
-                    break;
-                case 'Kelvin':
-                    Celsius.value = whatKey - 273.15;
-                    Fahrenheit.value = (whatKey - 273.15) * 9 / 5 + 32;
-                    Rankine.value = (whatKey * 9 / 5);
-                    Romer.value = (whatKey - 273.15) * 21 / 40 + 7.5;
-                    break;
-                case 'Fahrenheit':
-                    Celsius.value = (whatKey - 32) * 5 / 9;
-                    Kelvin.value = (whatKey - 32) * 5 / 9 + 273.15;
-                    Rankine.value = whatKey + 459.67;
-                    Romer.value = (whatKey - 32) * 7 / 24 + 7.5;
-                    break;
-                case 'Rankine':
-                    Celsius.value = (whatKey - 491.67) * 5 / 9;
-                    Kelvin.value = whatKey * 5 / 9;
-                    Fahrenheit.value = whatKey - 459.67;
-                    Romer.value = (whatKey - 491.67) * 7 / 24 + 7.5;
-                    break;
-                case 'Romer':
-                    Celsius.value = (whatKey - 7.5) * 40 / 21;
-                    Kelvin.value = (whatKey - 7.5) * 40 / 21 + 273.15;
-                    Fahrenheit.value = (whatKey - 7.5) * 24 / 7 + 32;
-                    Rankine.value = (whatKey - 7.5) * 24 / 7 + 491.67;
-                    break;
-                case 'Meter':
-                    Kmeter.value = whatKey / 1000;
-                    break;
+        switch (targetId) {
+            case 'Celsius':
+                Kelvin.value = whatKey + 273.15;
+                Fahrenheit.value = (whatKey * 9 / 5) + 32;
+                Rankine.value = (whatKey * 9 / 5) + 491.67;
+                Romer.value = (whatKey * 21 / 40) + 7.5;
+                break;
+            case 'Kelvin':
+                Celsius.value = whatKey - 273.15;
+                Fahrenheit.value = (whatKey - 273.15) * 9 / 5 + 32;
+                Rankine.value = (whatKey * 9 / 5);
+                Romer.value = (whatKey - 273.15) * 21 / 40 + 7.5;
+                break;
+            case 'Fahrenheit':
+                Celsius.value = (whatKey - 32) * 5 / 9;
+                Kelvin.value = (whatKey - 32) * 5 / 9 + 273.15;
+                Rankine.value = whatKey + 459.67;
+                Romer.value = (whatKey - 32) * 7 / 24 + 7.5;
+                break;
+            case 'Rankine':
+                Celsius.value = (whatKey - 491.67) * 5 / 9;
+                Kelvin.value = whatKey * 5 / 9;
+                Fahrenheit.value = whatKey - 459.67;
+                Romer.value = (whatKey - 491.67) * 7 / 24 + 7.5;
+                break;
+            case 'Romer':
+                Celsius.value = (whatKey - 7.5) * 40 / 21;
+                Kelvin.value = (whatKey - 7.5) * 40 / 21 + 273.15;
+                Fahrenheit.value = (whatKey - 7.5) * 24 / 7 + 32;
+                Rankine.value = (whatKey - 7.5) * 24 / 7 + 491.67;
+                break;
+            case 'Meter':
+                inch.value = whatKey * (1 / 0.0254);
+                foot.value = whatKey * (1 / 0.3048);
+                yard.value = whatKey * (1 / 0.9144);
+                Kmeter.value = whatKey / 1000;
+                mile.value = whatKey * (1 / 1609.344);
+                nm.value = whatKey * (1 / 1852);
+                ls.value = whatKey * (1 / 299792458)
+                break;
+            case 'inch':
+                Meter.value = whatKey * 0.0254;
+                foot.value = whatKey / 12;
+                yard.value = whatKey / 36;
+                Kmeter.value = whatKey * 0.0000254;
+                mile.value = whatKey / 63360;
+                nm.value = whatKey / 72913.3858;
+                ls.value = whatKey / (1.1802852677 * 10 ^ 13);
+                ly.value = whatKey / (3.7246174803 * 10 ^ 20);
+                parsec.value = whatKey / (1.12148336925 * 10 ^ 21);
                 case 'Kmeter':
                     Meter.value = whatKey * 1000;
                     break;
@@ -129,10 +145,26 @@ function TemperatureConvThing(){
 function LengthConvThing() {
     return '<div id="innerContent">'
         + '<label for="Meter">m(Meter)</label>'
+        + '<label for="inch">Inch</label>'
+        + '<label for="foot">Foot</label>'
+        + '<label for="yard">Yard</label>'
         + '<label for="Kmeter">km(Kilometer)</label>'
+        + '<label for="mile">Mile</label>'
+        + '<label for="nm">Nautical Mile</label>'
+        + '<label for="ls"Light Second</label>'
+        + '<label for="ly">Light Year</label>'
+        + '<label for="parsec">Parsec</label>'
         + '<br>'
         + '<input type="number" id="Meter" name="Meter" step="0.01" min="0" />'
-        + '<input type="number" id="Kmeter name="Kmeter" step="0.01" min="0"/> '
+        + '<input type="number" id="inch" name="inch" step="0.01" min="0" />'
+        + '<input type="number" id="foot" name="foot" step="0.01" min-"0" />'
+        + '<input type="number" id="yard" name="yard" step="0.01" min="0" />'
+        + '<input type="number" id="Kmeter" name="Kmeter" step="0.01" min="0" />'
+        + '<input type="number" id="mile" name="mile" step="0.01" min="0" />'
+        + '<input type="number" id="nm" name="nm" step="0.01" min="0" />'
+        + '<input type="number" id="ls" name="ls" step="0.01" min="0" />'
+        + '<input type="number" id="ly" name="ly" step="0.01" min="0" />'
+        + '<input type="number" id="parsec" name="parsec" step="0.01" min="0" />'
     + '</div>'
 }
 function PlaceholderForConv() {
