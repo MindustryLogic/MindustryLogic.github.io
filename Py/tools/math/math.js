@@ -24,10 +24,18 @@ const AnyButton = document.querySelectorAll("button");
 const modeDisplay = document.querySelector("div#mode-display p");
 const ConvPlace = document.getElementById("innerContent");
 const vw = window.innerWidth;
+const rounding = document.getElementById("rounding");
+let RoundTo = 6;
 let HowManyStuffInConv = 5;
 let CalcForWidthOfConvThingCusInputHasMarginButNowItPixel = 100;
 window.addEventListener('DOMContentLoaded', (event) => {
     event.preventDefault();
+    rounding.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            RoundTo = Number(event.target.value);
+        }
+    })
     modeSwitchButtons.forEach(button => button.addEventListener("click", function () {
         CALLTHEJSON();
         console.log(mode + "this is mode num");
@@ -84,62 +92,67 @@ function Conv(event) {
         const whatKey = Number(event.target.value);
         switch (targetId) {
             case 'Celsius':
-                Kelvin.value = whatKey + 273.15;
-                Fahrenheit.value = (whatKey * 9 / 5) + 32;
-                Rankine.value = (whatKey * 9 / 5) + 491.67;
-                Romer.value = (whatKey * 21 / 40) + 7.5;
+                Kelvin.value = parseFloat((whatKey + 273.15).toPrecision(RoundTo));
+                Fahrenheit.value = parseFloat(((whatKey * 9 / 5) + 32).toPrecision(RoundTo));
+                Rankine.value = parseFloat(((whatKey * 9 / 5) + 491.67).toPrecision(RoundTo));
+                Romer.value = parseFloat(((whatKey * 21 / 40) + 7.5).toPrecision(RoundTo));
                 break;
             case 'Kelvin':
-                Celsius.value = whatKey - 273.15;
-                Fahrenheit.value = (whatKey - 273.15) * 9 / 5 + 32;
-                Rankine.value = (whatKey * 9 / 5);
-                Romer.value = (whatKey - 273.15) * 21 / 40 + 7.5;
+                Celsius.value = parseFloat((whatKey - 273.15).toPrecision(RoundTo));
+                Fahrenheit.value = parseFloat(((whatKey - 273.15) * 9 / 5 + 32).toPrecision(RoundTo));
+                Rankine.value = parseFloat(((whatKey * 9 / 5)).toPrecision(RoundTo));
+                Romer.value = parseFloat(((whatKey - 273.15) * 21 / 40 + 7.5).toPrecision(RoundTo));
                 break;
             case 'Fahrenheit':
-                Celsius.value = (whatKey - 32) * 5 / 9;
-                Kelvin.value = (whatKey - 32) * 5 / 9 + 273.15;
-                Rankine.value = whatKey + 459.67;
-                Romer.value = (whatKey - 32) * 7 / 24 + 7.5;
+                Celsius.value = parseFloat(((whatKey - 32) * 5 / 9).toPrecision(RoundTo));
+                Kelvin.value = parseFloat(((whatKey - 32) * 5 / 9 + 273.15).toPrecision(RoundTo));
+                Rankine.value = parseFloat((whatKey + 459.67).toPrecision(RoundTo));
+                Romer.value = parseFloat(((whatKey - 32) * 7 / 24 + 7.5).toPrecision(RoundTo));
                 break;
             case 'Rankine':
-                Celsius.value = (whatKey - 491.67) * 5 / 9;
-                Kelvin.value = whatKey * 5 / 9;
-                Fahrenheit.value = whatKey - 459.67;
-                Romer.value = (whatKey - 491.67) * 7 / 24 + 7.5;
+                Celsius.value = parseFloat(((whatKey - 491.67) * 5 / 9).toPrecision(RoundTo));
+                Kelvin.value = parseFloat((whatKey * 5 / 9).toPrecision(RoundTo));
+                Fahrenheit.value = parseFloat((whatKey - 459.67).toPrecision(RoundTo));
+                Romer.value = parseFloat(((whatKey - 491.67) * 7 / 24 + 7.5).toPrecision(RoundTo));
                 break;
             case 'Romer':
-                Celsius.value = (whatKey - 7.5) * 40 / 21;
-                Kelvin.value = (whatKey - 7.5) * 40 / 21 + 273.15;
-                Fahrenheit.value = (whatKey - 7.5) * 24 / 7 + 32;
-                Rankine.value = (whatKey - 7.5) * 24 / 7 + 491.67;
+                Celsius.value = parseFloat(((whatKey - 7.5) * 40 / 21).toPrecision(RoundTo));
+                Kelvin.value = parseFloat(((whatKey - 7.5) * 40 / 21 + 273.15).toPrecision(RoundTo));
+                Fahrenheit.value = parseFloat(((whatKey - 7.5) * 24 / 7 + 32).toPrecision(RoundTo));
+                Rankine.value = parseFloat(((whatKey - 7.5) * 24 / 7 + 491.67).toPrecision(RoundTo));
                 break;
             case 'Meter':
-                inch.value = whatKey * (1 / 0.0254);
-                foot.value = whatKey * (1 / 0.3048);
-                yard.value = whatKey * (1 / 0.9144);
-                Kmeter.value = whatKey / 1000;
-                mile.value = whatKey * (1 / 1609.344);
-                nm.value = whatKey * (1 / 1852);
-                ls.value = whatKey * (1 / 299792458)
+                inch.value = parseFloat((whatKey * (1 / 0.0254)).toPrecision(RoundTo));
+                foot.value = parseFloat((whatKey * (1 / 0.3048)).toPrecision(RoundTo));
+                yard.value = parseFloat((whatKey * (1 / 0.9144).toPrecision(RoundTo)));
+                Kmeter.value = parseFloat((whatKey / 1000).toPrecision(RoundTo));
+                mile.value = parseFloat((whatKey * (1 / 1609.344)).toPrecision(RoundTo));
+                nm.value = parseFloat((whatKey * (1 / 1852)).toPrecision(RoundTo));
+                ls.value = parseFloat((whatKey * (1 / 299792458)).toPrecision(RoundTo));
+                ly.value = parseFloat((whatKey * (1 / 9460730472580800)).toPrecision(RoundTo));
+                parsec.value = parseFloat((whatKey * (1 / 30856775814913600)).toPrecision(RoundTo));
                 break;
             case 'inch':
-                Meter.value = whatKey * 0.0254;
-                foot.value = whatKey / 12;
-                yard.value = whatKey / 36;
-                Kmeter.value = whatKey * 0.0000254;
-                mile.value = whatKey / 63360;
-                nm.value = whatKey / 72913.3858;
-                ls.value = whatKey / (1.1802852677 * 10 ^ 13);
-                ly.value = whatKey / (3.7246174803 * 10 ^ 20);
-                parsec.value = whatKey / (1.12148336925 * 10 ^ 21);
+                Meter.value = parseFloat((whatKey * 0.0254).toPrecision(RoundTo));
+                foot.value = parseFloat((whatKey / 12).toPrecision(RoundTo));
+                yard.value = parseFloat((whatKey / 36).toPrecision(RoundTo));
+                Kmeter.value = parseFloat((whatKey * 0.0000254).toPrecision(RoundTo));
+                mile.value = parseFloat((whatKey / 63360).toPrecision(RoundTo));
+                nm.value = parseFloat((whatKey / 72913.3858).toPrecision(RoundTo));
+                ls.value = parseFloat((whatKey * 0.0254 / 299792458).toPrecision(RoundTo));
+                ly.value = parseFloat((whatKey * 0.0254 / 9460730472580800).toPrecision(RoundTo));
+                parsec.value = parseFloat((whatKey * 0.0254 / 30856775814913600).toPrecision(RoundTo));
+                break;
+            case 'foot':
+                break;//i got lazy :p
             case 'Kmeter':
-                Meter.value = whatKey * 1000;
+                Meter.value = parseFloat((whatKey * 1000).toPrecision(RoundTo));
                 break;
             case 'cm2':
-                m2.value = whatKey / (100 * 100 * 100);
+                m2.value = parseFloat((whatKey / (100 * 100 * 100)).toPrecision(RoundTo));
                 break;
             case 'm2':
-                cm2.value = whatKey * (100 * 100 * 100);
+                cm2.value = parseFloat((whatKey * (100 * 100 * 100)).toPrecision(RoundTo));
                 break;
         }//yep length part did not work.probably need to refresh targetId(successfully did it)
     }
@@ -173,7 +186,7 @@ function LengthConvThing() {
         + '<label for="Kmeter">km(Kilometer)</label>'
         + '<label for="mile">Mile</label>'
         + '<label for="nm">Nautical Mile</label>'
-        + '<label for="ls"Light Second</label>'
+        + '<label for="ls">Light Second</label>'
         + '<label for="ly">Light Year</label>'
         + '<label for="parsec">Parsec</label>'
         + '</div>'

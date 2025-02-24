@@ -157,13 +157,16 @@ ul {
    color: wheat;
    background-color: #f08;
 }
+#unit-conv input{
+   width:2.5%;
+}
 #innerContent{
    width:100vw;
    display:table;
    background-color:#bbb;
 }
 #innerContent .labels label{
-   display:inline-table;
+   display:inline-flex;
    font-size:10px;
    margin-right: 0px;
    text-align: left;
