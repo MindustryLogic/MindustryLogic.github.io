@@ -24,16 +24,20 @@
             <button type="button" id="subModeSwitch" onclick="submode = 3">Volume</button>
         </div>
         <div id="innerContent">
+            <div class="labels">
             <label for="Celsius">°C(Celsius)</label>
             <label for="Kelvin">K(Kelvin)</label>
             <label for="Fahrenheit">°F(Fahrenheit)</label>
             <label for="Rankine">°Ra(Rankine)</label>
-            <label for="Romer">°Rø(Rømer)</label><br>
+            <label for="Romer">°Rø(Rømer)</label>
+            </div>
+            <div class="inputs">
             <input type="number" id="Celsius" name="Celsius" step="0.01" min="-273.15" />
             <input type="number" id="Kelvin" name="Kelvin" step="0.01" min="0" />
             <input type="number" id="Fahrenheit" name="Fahrenheit" step="0.01" min="-459.67" />
             <input type="number" id="Rankine" name="Rankine" step="0.01" min="0" />
             <input type="number" id="Romer" name="Romer" step="0.01" min="-135.9" />
+            </div>
         </div>
         <script src="math.js"></script>
     </body>

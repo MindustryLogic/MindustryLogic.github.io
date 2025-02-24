@@ -49,19 +49,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 case 0:
                     ConvPlace.innerHTML = TemperatureConvThing();
                     HowManyStuffInConv = document.querySelectorAll("#innerContent input").length;
-                    CalcForWidthOfConvThingCusInputHasMarginButNowItPixel = vw / HowManyStuffInConv - 7;
+                    CalcForWidthOfConvThingCusInputHasMarginButNowItPixel = vw / HowManyStuffInConv - 5;
                     document.querySelectorAll("#innerContent input, #innerContent label").forEach(slot => slot.style.width = CalcForWidthOfConvThingCusInputHasMarginButNowItPixel + "px");
                     break;
                 case 1:
                     ConvPlace.innerHTML = LengthConvThing();
                     HowManyStuffInConv = document.querySelectorAll("#innerContent input").length;//seems like it isn't working
-                    CalcForWidthOfConvThingCusInputHasMarginButNowItPixel = vw / HowManyStuffInConv - 7;
+                    CalcForWidthOfConvThingCusInputHasMarginButNowItPixel = vw / HowManyStuffInConv - 5;
                     document.querySelectorAll("#innerContent input, #innerContent label").forEach(slot => slot.style.width = CalcForWidthOfConvThingCusInputHasMarginButNowItPixel + "px");
                     break;
                 case 2:
                     ConvPlace.innerHTML = AreaConvThing();
                     HowManyStuffInConv = document.querySelectorAll("#innerContent input").length;
-                    CalcForWidthOfConvThingCusInputHasMarginButNowItPixel = vw / HowManyStuffInConv - 7;
+                    CalcForWidthOfConvThingCusInputHasMarginButNowItPixel = vw / HowManyStuffInConv - 5;
                     document.querySelectorAll("#innerContent input, #innerContent label").forEach(slot => slot.style.width = CalcForWidthOfConvThingCusInputHasMarginButNowItPixel + "px");
                     break;
             }
@@ -69,7 +69,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }));
     AnyButton.forEach(button => button.addEventListener("click", function () {
         ConvInput.removeEventListener('keydown', Conv);
-        setTimeout(() => { ConvInput.addEventListener('keydown', Conv); }, 250);
+        setTimeout(() => { ConvInput.addEventListener('keydown', Conv); }, 450);
     }));
 });
 //TODO:Find out how to swap the html
@@ -147,20 +147,25 @@ function Conv(event) {
 
 function TemperatureConvThing(){
     return '<div id="innerContent">'
+        + '<div class="labels">'
         +   '<label for="Celsius">°C(Celsius)</label>'
         +   '<label for="Kelvin">K(Kelvin)</label>'
         +   '<label for="Fahrenheit">°F(Fahrenheit)</label>'
         +   '<label for="Rankine">°Ra(Rankine)</label>'
-        +   '<label for="Romer">°Rø(Rømer)</label><br>'
+        + '<label for="Romer">°Rø(Rømer)</label>'
+        + '</div>'
+        + '<div class="inputs">'
         +   '<input type="number" id="Celsius" name="Celsius"  min="-273.15" />'
         +   '<input type="number" id="Kelvin" name="Kelvin"  min="0" />'
         +   '<input type="number" id="Fahrenheit" name="Fahrenheit"  min="-459.67" />'
         +   '<input type="number" id="Rankine" name="Rankine"  min="0" />'
-        +   '<input type="number" id="Romer" name="Romer"  min="-135.9" />'
+        + '<input type="number" id="Romer" name="Romer"  min="-135.9" />'
+        + '</div>'
         +'</div>'
 };
 function LengthConvThing() {
     return '<div id="innerContent">'
+        + '<div class="labels">'
         + '<label for="Meter">m(Meter)</label>'
         + '<label for="inch">Inch</label>'
         + '<label for="foot">Foot</label>'
@@ -171,7 +176,8 @@ function LengthConvThing() {
         + '<label for="ls"Light Second</label>'
         + '<label for="ly">Light Year</label>'
         + '<label for="parsec">Parsec</label>'
-        + '<br>'
+        + '</div>'
+        + '<div class="inputs">'
         + '<input type="number" id="Meter" name="Meter" step="0.01" min="0" />'
         + '<input type="number" id="inch" name="inch" step="0.01" min="0" />'
         + '<input type="number" id="foot" name="foot" step="0.01" min-"0" />'
@@ -182,15 +188,20 @@ function LengthConvThing() {
         + '<input type="number" id="ls" name="ls" step="0.01" min="0" />'
         + '<input type="number" id="ly" name="ly" step="0.01" min="0" />'
         + '<input type="number" id="parsec" name="parsec" step="0.01" min="0" />'
+        + '</div>'
     + '</div>'
 }
 function AreaConvThing() {
     return '<div id="innerContent">'
+        + '<div class="labels">'
         + '<label for="cm2">cm2</label>'
         + '<label for="m2">m2</label>'
+        + '</div>'
         + '<br>'
+        + '<div class="inputs">'
         + '<input type="number" id="cm2" name="cm2" step="0.01" min="0" />'
         + '<input type="number" id="m2" name="m2" step="0.01" min="0" />'
+        + '</div>'
         + '</div>'
 }
 function PlaceholderForConv() {

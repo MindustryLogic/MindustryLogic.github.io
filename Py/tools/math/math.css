@@ -161,23 +161,27 @@ ul {
    width:100vw;
    display:table;
    background-color:#bbb;
-   overflow:hidden;
 }
-#innerContent label{
-   display:inline-block;
+#innerContent .labels label{
+   display:inline-table;
    font-size:10px;
-   margin-right: 3px;
+   margin-right: 0px;
+   text-align: left;
+   border-style: solid;
+   border-width: 1px;
+   overflow:visible;
 }
-#innerContent input{
+#innerContent .inputs input{
    display:inline-table;
    background-color:antiquewhite;
+   border-style: solid;
+   border-width: 1px;
    color:black;
    margin-left:0px;
    margin-right:0px;
    padding-left:0px;
    padding-right:0px;
-   vertical-align: top;
-}/*The button have default margin!!!*/
+}/*The input have default margin!!!*/
 #debug{
    font-family: "VT323", serif;
    font-size: 10px;
