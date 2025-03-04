@@ -1,0 +1,11 @@
+#InputLang{
+    text-align:left;
+}
+#InputLang input{
+    width: 49%;
+    height: 45%;
+    margin:0;
+}
+#OutputLang{
+
+}

@@ -125,7 +125,7 @@ function Conv(event) {
                 inch.value = parseFloat((whatKey * (1 / 0.0254)).toPrecision(RoundTo));
                 foot.value = parseFloat((whatKey * (1 / 0.3048)).toPrecision(RoundTo));
                 yard.value = parseFloat((whatKey * (1 / 0.9144).toPrecision(RoundTo)));
-                Kmeter.value = parseFloat((whatKey / 1000).toPrecision(RoundTo));
+                KMeter.value = parseFloat((whatKey / 1000).toPrecision(RoundTo));
                 mile.value = parseFloat((whatKey * (1 / 1609.344)).toPrecision(RoundTo));
                 nm.value = parseFloat((whatKey * (1 / 1852)).toPrecision(RoundTo));
                 ls.value = parseFloat((whatKey * (1 / 299792458)).toPrecision(RoundTo));
@@ -136,7 +136,7 @@ function Conv(event) {
                 Meter.value = parseFloat((whatKey * 0.0254).toPrecision(RoundTo));
                 foot.value = parseFloat((whatKey / 12).toPrecision(RoundTo));
                 yard.value = parseFloat((whatKey / 36).toPrecision(RoundTo));
-                Kmeter.value = parseFloat((whatKey * 0.0000254).toPrecision(RoundTo));
+                KMeter.value = parseFloat((whatKey * 0.0000254).toPrecision(RoundTo));
                 mile.value = parseFloat((whatKey / 63360).toPrecision(RoundTo));
                 nm.value = parseFloat((whatKey / 72913.3858).toPrecision(RoundTo));
                 ls.value = parseFloat((whatKey * 0.0254 / 299792458).toPrecision(RoundTo));
@@ -145,7 +145,7 @@ function Conv(event) {
                 break;
             case 'foot':
                 break;//i got lazy :p
-            case 'Kmeter':
+            case 'KMeter':
                 Meter.value = parseFloat((whatKey * 1000).toPrecision(RoundTo));
                 break;
             case 'cm2':
@@ -183,7 +183,7 @@ function LengthConvThing() {
         + '<label for="inch">Inch</label>'
         + '<label for="foot">Foot</label>'
         + '<label for="yard">Yard</label>'
-        + '<label for="Kmeter">km(Kilometer)</label>'
+        + '<label for="KMeter">km(Kilometer)</label>'
         + '<label for="mile">Mile</label>'
         + '<label for="nm">Nautical Mile</label>'
         + '<label for="ls">Light Second</label>'
@@ -195,7 +195,7 @@ function LengthConvThing() {
         + '<input type="number" id="inch" name="inch" step="0.01" min="0" />'
         + '<input type="number" id="foot" name="foot" step="0.01" min-"0" />'
         + '<input type="number" id="yard" name="yard" step="0.01" min="0" />'
-        + '<input type="number" id="Kmeter" name="Kmeter" step="0.01" min="0" />'
+        + '<input type="number" id="KMeter" name="KMeter" step="0.01" min="0" />'
         + '<input type="number" id="mile" name="mile" step="0.01" min="0" />'
         + '<input type="number" id="nm" name="nm" step="0.01" min="0" />'
         + '<input type="number" id="ls" name="ls" step="0.01" min="0" />'
