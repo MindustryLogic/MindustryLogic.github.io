@@ -7,11 +7,12 @@ and X-sampa also cuz UTAU
 FromJSON = []
 InputLang = document.getElementById("InputLangSelect").value;
 OutputLang = document.getElementById("OutputLangSelect").value;
-UserInput = document.getElementById("InputStuff").value;
-OutputDisplay = document.getElementById("OutputStuff").value;
+UserInput = document.getElementById("InputStuff");
+OutputDisplay = document.getElementById("OutputStuff");
 IsInputOutputLangSame = true;
 window.addEventListener("DOMContentLoaded", function (event) {
     event.preventDefault();
+    autoFormSelectLangOption();
 })
 async function GetWordsFromJSON(thing) {
     const Grabbed = await fetch("dict.json");
@@ -21,34 +22,31 @@ async function GetWordsFromJSON(thing) {
 }
 function autoFormSelectLangOption() {
     GetWordsFromJSON(0);
-    for (i = 0; i < FromJSON.length; i++){
-        const Langs = String(FromJSON[i]);
-        const options = document.createElement("option");
-        options.forEach((attribute) => {
-            attribute.textContent = Langs;
-            attribute.value = Langs;
-        });
-        const MakeText = document.createTextNode(Langs.toString())
-        options.appendChild(MakeText);
-        document.querySelectorAll("#InputLangSelect", "#OutputLangSelect").forEach((LangSelect) => {
-            LangSelect.appendChild(options);
-        });
-    }//absolutely not working
-}
-UserInput.addEventListener("keydown", function (event) {
-    event.preventDefault();
-    UserInput = document.getElementById("InputStuff").value;
-    //User input sanitation
-    UserInputValue = UserInput
-    if (UserInputValue.match(/[\s_-]/g)) {
-        OutputDisplay.value = "Ay bro you forget to press the space bar";
-    } else {
-        //Detect is Input and Output lang is same or not
-        if (InputLang === OutputLang) {
-            IsInputOutputLangSame = true;
-            OutputDisplay.value = UserInputValue;
+    setTimeout(() => {
+        if (FromJSON.length > 0) {
+            for (i = 0; i < FromJSON.length; i++) {
+                let Langs = String(FromJSON[i]);
+                let Option = ["<option value='", Langs, "'>", Langs, "</option>"];
+                document.getElementById("InputLangSelect").innerHTML += Option.join("");
+                document.getElementById("OutputLangSelect").innerHTML += Option.join("");                
+            }//absolutely working as intended
         } else {
-            //placeholder
+            console.error("this should not happen");
         }
+    }, 5000);
+}
+UserInput.addEventListener('keydown', Translate);
+function Translate (event) {
+    UserInputValue = document.getElementById("InputStuff").value;
+    //User input sanitation
+    if (UserInputValue.length > 0) {
+        if (UserInputValue.match(/[\s_-]/g) === true) {
+            OutputDisplay.value = "ay bro";
+        } else if (InputLang == OutputLang) {
+            OutputDisplay.value = UserInputValue;
+        }
+    } else {
+        OutputDisplay.value = "";
     }
-})
+    UserInputValue = document.getElementById("InputStuff").value;
+}

@@ -15,7 +15,8 @@
     margin:0;
     position:absolute;
     left:1%;
-    top:30%
+    top:30%;
+    color:black;
 }
 #OutputLang label{
     text-align:right;
@@ -34,5 +35,6 @@
     margin:0;
     position:absolute;
     right:1%;
-    top:30%
+    top:30%;
+    color:black;
 }
