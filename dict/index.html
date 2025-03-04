@@ -12,8 +12,24 @@
     <div id="navnav"></div>
     <hr>
     <!--how do i sort this bs-->
-    <div id="InputLang"></div>
-    <label for ="InputLang">Input Language</label>
-    <select name="Input" id="InputLangSelect"></select>
+    <div id="dict">
+    <div id="InputLang">
+    <label for="InputLangSelect">Input Language:</label>
+    <select name="Input" id="InputLangSelect">
+        <option value="en">English</option>
+        <option value="zh-CN">Chinese</option>
+    </select><br>
+    <input type="text" id="InputStuff" placeholder="Enter things here">
+    </div>
+    <div id="OutputLang">
+    <label for="OutputLangSelect">Output Language:</label>
+    <select name="Output" id="OutputLangSelect">
+        <option value="en">English</option>
+        <option value="zh-CN">Chinese</option>
+    </select><br>
+    <input type="text" id="OutputStuff" placeholder="Translated stuff here also you can't type here" disabled>
+    </div>
+    </div>
+    <script src="dict.js"></script>
 </body>
 </html>

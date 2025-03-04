@@ -1,11 +1,38 @@
-#InputLang{
+#InputLang label{
     text-align:left;
+    left:1%;
+    top:25%;
+    position:absolute;
+}
+#InputLang select{
+    position:absolute;
+    left:11%;
+    top:25%;
 }
 #InputLang input{
-    width: 49%;
+    width: 47.5%;
     height: 45%;
     margin:0;
+    position:absolute;
+    left:1%;
+    top:30%
 }
-#OutputLang{
-
+#OutputLang label{
+    text-align:right;
+    left:50%;
+    top:25%;
+    position:absolute;
+}
+#OutputLang select{
+    position:absolute;
+    left:61%;
+    top:25%;
+}
+#OutputLang input{
+    width:47.5%;
+    height:45%;
+    margin:0;
+    position:absolute;
+    right:1%;
+    top:30%
 }
