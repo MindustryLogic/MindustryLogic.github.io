@@ -1,3 +1,4 @@
+import * as mathPhy from './mathPhy.js';
 let mode = 0;
 let submode = 0;
 let fromJSON = [];
