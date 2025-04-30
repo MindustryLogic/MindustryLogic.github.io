@@ -1,4 +1,6 @@
 import * as mathPhy from './mathPhy.js';
+mathPhy.initPhy.expandE();
+console.log(mathPhy.eExpand);
 let mode = 0;
 let submode = 0;
 let fromJSON = [];
