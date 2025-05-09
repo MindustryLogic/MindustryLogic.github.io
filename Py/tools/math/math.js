@@ -1,6 +1,3 @@
-import * as mathPhy from './mathPhy.js';
-mathPhy.initPhy.expandE();
-console.log(mathPhy.eExpand);
 let mode = 0;
 let submode = 0;
 let fromJSON = [];
@@ -94,6 +91,7 @@ function Conv(event) {
         const targetId = event.target.id;
         const whatKey = Number(event.target.value);
         switch (targetId) {
+            //Temp
             case 'Celsius':
                 Kelvin.value = parseFloat((whatKey + 273.15).toPrecision(RoundTo));
                 Fahrenheit.value = parseFloat(((whatKey * 9 / 5) + 32).toPrecision(RoundTo));
@@ -124,7 +122,21 @@ function Conv(event) {
                 Fahrenheit.value = parseFloat(((whatKey - 7.5) * 24 / 7 + 32).toPrecision(RoundTo));
                 Rankine.value = parseFloat(((whatKey - 7.5) * 24 / 7 + 491.67).toPrecision(RoundTo));
                 break;
+            //Length (also easier nav i guess)
+            case 'cm':
+                Meter.value = praseFloat((whatKey / 100).toPrecision(RoundTo));
+                inch.value = praseFloat((whatKey / 2.54).toPrecision(RoundTo));
+                foot.value = praseFloat((whatKey / 30.48).toPrecision(RoundTo));
+                yard.value = praseFloat((whatKey / 91.44).toPrecision(RoundTo));
+                KMeter.value = praseFloat((whatKey / 100000).toPrecision(RoundTo));
+                mile.value = praseFloat((whatKey / 160934.4).toPrecision(RoundTo));
+                nm.value = praseFloat((whatKey / 185200).toPrecision(RoundTo));
+                ls.value = praseFloat((whatKey / 29979245800).toPrecision(RoundTo));
+                ly.value = praseFloat((whatKey / 946073047258080000).toPrecision(RoundTo));
+                parsec.value = praseFloat((whatKey / 3085677581491360000).toPrecision(RoundTo));
+                break;
             case 'Meter':
+                cm.value = praseFloat((whatKey * 100).toPrecision(RoundTo));
                 inch.value = parseFloat((whatKey * (1 / 0.0254)).toPrecision(RoundTo));
                 foot.value = parseFloat((whatKey * (1 / 0.3048)).toPrecision(RoundTo));
                 yard.value = parseFloat((whatKey * (1 / 0.9144).toPrecision(RoundTo)));
@@ -136,6 +148,7 @@ function Conv(event) {
                 parsec.value = parseFloat((whatKey * (1 / 30856775814913600)).toPrecision(RoundTo));
                 break;
             case 'inch':
+                cm.value = praseFloat((whatKey * 2.54).toPrecision(RoundTo));
                 Meter.value = parseFloat((whatKey * 0.0254).toPrecision(RoundTo));
                 foot.value = parseFloat((whatKey / 12).toPrecision(RoundTo));
                 yard.value = parseFloat((whatKey / 36).toPrecision(RoundTo));
@@ -147,10 +160,42 @@ function Conv(event) {
                 parsec.value = parseFloat((whatKey * 0.0254 / 30856775814913600).toPrecision(RoundTo));
                 break;
             case 'foot':
+                cm.value = praseFloat((whatKey * 30.48).toPrecision(RoundTo));
+                Meter.value = parseFloat((whatKey * 0.3048).toPrecision(RoundTo));
+                inch.value = praseFloat((whatKey * 12).toPrecision(RoundTo));
+                yard.value = praseFloat((whatKey / 3).toPrecision(RoundTo));
+                KMeter.value = parseFloat((whatKey * 0.0003048).toPrecision(RoundTo));
+                mile.value = praseFloat((whatKey / 5280).toPrecision(RoundTo));
+                nm.value = praseFloat((whatKey / 6076.1).toPrecision(RoundTo));
+                ls.value = praseFloat((whatKey * (299792458 / 0.3048)).toPrecision(RoundTo));
+                ly.value = praseFloat((whatKey * (9460730472580800 / 0.3048)).toPrecision(RoundTo));
+                parsec.value = praseFloat((whatKey * (30856775814913600 / 0.3048)).toPrecision(RoundTo));
                 break;//i got lazy :p
             case 'KMeter':
+                cm.value = praseFloat((whatKey * 100000).toPrecision(RoundTo));
                 Meter.value = parseFloat((whatKey * 1000).toPrecision(RoundTo));
+                inch.value = praseFloat((whatKey * 39370).toPrecision(RoundTo));
+                foot.value = praseFloat((whatKey * 3280.84).toPrecision(RoundTo));
+                yard.value = praseFloat((whatKey * 1093.61).toPrecision(RoundTo));
+                mile.value = praseFloat((whatKey * 0.621371).toPrecision(RoundTo));
+                nm.value = praseFloat((whatKey * 0.539957).toPrecision(RoundTo));
+                ls.value = praseFloat((whatKey * (1 / 299792.458)).toPrecision(RoundTo));
+                ly.value = praseFloat((whatKey * (1 / 9460730472580.8)).toPrecision(RoundTo));
+                parsec.value = praseFloat((whatKey * (1 / 30856775814913.6)).toPrecision(RoundTo));
                 break;
+            case 'mile':
+                cm.value = praseFloat((whatKey * 160934.4).toPrecision(RoundTo));
+                Meter.value = praseFloat((whatKey * 1609.344).toPrecision(RoundTo));
+                inch.value = praseFloat((whatKey * 63360).toPrecision(RoundTo));
+                foot.value = praseFloat((whatKey * 5280).toPrecision(RoundTo));
+                yard.value = praseFloat((whatKey * 1760).toPrecision(RoundTo));
+                KMeter.value = praseFloat((whatKey * 1.609344).toPrecision(RoundTo));
+                nm.value = praseFloat((whatKey * 0.86897845).toPrecision(RoundTo));
+                ls.value = praseFloat((whatKey / (299792458 / 1609.344)).toPrecision(RoundTo));
+                ly.value = praseFloat((whatKey / (9460730472580800 / 1609.344)).toPrecision(RoundTo));
+                parsec.value = praseFloat((whatKey / (30856775814913600 / 1609.344)).toPrecision(RoundTo));
+                break;
+            //Area
             case 'cm2':
                 m2.value = parseFloat((whatKey / (100 * 100 * 100)).toPrecision(RoundTo));
                 break;
@@ -160,6 +205,10 @@ function Conv(event) {
         }//yep length part did not work.probably need to refresh targetId(successfully did it)
     }
 };
+//let's see how can i pull a java
+//I guess i'll just
+//Temp = C, F, K, Ra, Ro
+//Length = cm, m, inch, foot, yard, km, mile, nm, ls, ly ,parsec
 
 function TemperatureConvThing(){
     return '<div id="innerContent">'
@@ -182,6 +231,7 @@ function TemperatureConvThing(){
 function LengthConvThing() {
     return '<div id="innerContent">'
         + '<div class="labels">'
+        + '<label for="cm">cm(Centimeter)</label>'
         + '<label for="Meter">m(Meter)</label>'
         + '<label for="inch">Inch</label>'
         + '<label for="foot">Foot</label>'
@@ -194,6 +244,7 @@ function LengthConvThing() {
         + '<label for="parsec">Parsec</label>'
         + '</div>'
         + '<div class="inputs">'
+        + '<input type="number" id="cm" name="cm" step="0.01" min="0" />'
         + '<input type="number" id="Meter" name="Meter" step="0.01" min="0" />'
         + '<input type="number" id="inch" name="inch" step="0.01" min="0" />'
         + '<input type="number" id="foot" name="foot" step="0.01" min-"0" />'
