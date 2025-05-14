@@ -10,12 +10,12 @@ function deciToVLQ(event) {
         event.preventDefault();
         deciInputVal = Number(deciInput.value);
         bin = deciInputVal.toString(2);
-        for (let i = 1; i<=bin.length; i++){
-            binNum = [];
-            bin7sep = [];
-            if (i % 6 == 0) {
-                
-            }
+        binNum = [];
+        bin7sep = [];
+        for (let i = 0; i < bin.length; i++) {
+            binNum.push(bin[i]);
         }
+        document.getElementById("wee").textContent = bin[1] + " " + bin + " " + binNum
+        
     }
 }
