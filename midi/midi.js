@@ -13,6 +13,7 @@ function deciToVLQ(event) {
         binNum = [];
         vlqHex = [];
         bin7sep = [];
+        justHex = "";
         console.log(bin);
         let itr = Math.floor((bin.length - 1) / 7);
         for (let i = 0; i < itr; i++) {
@@ -58,14 +59,20 @@ function deciToVLQ(event) {
             vlqHex.push(doubleDigitCheck);
         }
         console.log(vlqHex)
+        justHex = hexSolve(deciInputVal);
 
 
 
 
 
-
-        vlqOutput.textContent = vlqHex.join(" ");
-        document.getElementById("wee").textContent = bin7sep
+        vlqOutput.textContent = vlqHex.join(" ") + "  hexadecimal: " + justHex;
         
     }
 }
+function hexSolve(num) {
+    let hex = num.toString(16);
+    if (hex.length % 2 != 0) {
+        hex = "0" + hex;
+    }
+    return hex;
+    }
