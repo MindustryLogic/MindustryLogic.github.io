@@ -14,7 +14,6 @@ function deciToVLQ(event) {
         vlqHex = [];
         bin7sep = [];
         justHex = "";
-        console.log(bin);
         let itr = Math.floor((bin.length - 1) / 7);
         for (let i = 0; i < itr; i++) {
             for (let n = 0; n <= 6; n++){
@@ -22,7 +21,6 @@ function deciToVLQ(event) {
                 bin.pop();
             };
             binNum.reverse();
-            console.log(binNum)
             if(i==0){
                 binNum.unshift(0);
             } else {
@@ -30,10 +28,7 @@ function deciToVLQ(event) {
             }
             bin7sep.unshift(binNum.join(""));
             binNum = [];
-            console.log(bin7sep)
         }
-        console.log(bin.length)
-        console.log(bin)
         if (deciInputVal > 127) {
             binNum.push(bin.join(""))
             for (let n = 0; n < 7 - bin.length; n++) {
@@ -42,7 +37,6 @@ function deciToVLQ(event) {
             
             binNum.unshift(1);
             bin7sep.unshift(binNum.join(""));
-            console.log(bin7sep);
         } else {
             if (deciInputVal.toString(16).length == 1) {
                 vlqHex.push("0" + deciInputVal, toString(16));
@@ -58,7 +52,6 @@ function deciToVLQ(event) {
             }
             vlqHex.push(doubleDigitCheck);
         }
-        console.log(vlqHex)
         justHex = hexSolve(deciInputVal);
 
 

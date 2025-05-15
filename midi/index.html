@@ -15,6 +15,12 @@
         <p id="vlq">VLQ & hexadecimal output:</p>
         <p id="vlqOutput"></p>
     </div>
+    <div id="note">
+        <label for="TimeBase">Time Base(default 256)</label>&nbsp;<input type="number" id="TimeBase" name="TimeBase" step="1" min="0" placeholder="256"><br>
+        <label for="key">Key(in decimal)</label>&nbsp;<label for="velocity">Velocity(decimal)</label>&nbsp;<label for="duration">Duration(decimal, in how many 32th note)</label><br>
+        <small><p>key default is 60(C4);velocity default 100;duration default is a 4th note</p></small>
+        <input type="number" id="key" name="key" step="1" min="0" placeholder="60">&nbsp;<input type="number" id="velocity" name="velocity" step="1" min="0" placeholder="100">&nbsp;<input type="number" id="duration" name="duration" step="1" min="0" placeholder="8"><br>
+    </div>
     <script src="midi.js"></script>
 </body>
 </html>
