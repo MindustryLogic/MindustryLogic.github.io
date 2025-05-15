@@ -53,11 +53,6 @@ function deciToVLQ(event) {
             vlqHex.push(doubleDigitCheck);
         }
         justHex = hexSolve(deciInputVal);
-
-
-
-
-
         vlqOutput.textContent = vlqHex.join(" ") + "  hexadecimal: " + justHex;
         
     }
@@ -68,4 +63,29 @@ function hexSolve(num) {
         hex = "0" + hex;
     }
     return hex;
-    }
+}
+//testing midi note thing and download file and stuff, proof of concept
+const testMidiConfig = [0x4D, 0x54, 0x68, 0x64, 0x00, 0x00, 0x00, 0x06, 0x00, 0x01, 0x00, 0x01]//First 4 byte header,fixed 00000006,mode (0=single track,1=multi track,2=multi song),num of tracks(is 1)
+const testMidiTrack = [0x4D, 0x54, 0x72, 0x68]//Track header
+const pageHexClientView = document.getElementById("testHexOut");
+const testMidiTrackConfig = [0x00,0xFF,0x51,0x03,0x07,0xA1,0x20,0x00,0xFF,0x58,0x04,0x04,0x02,0x18,0x08]//tempo 120,time signature 4/4,and the midi clock that probably don't matter
+const testTB = document.getElementById("TimeBase");
+const testKey = document.getElementById("key");
+const testVe = document.getElementById("velocity");
+const testDur = document.getElementById("duration");
+function testMidi() {
+    let testWholeShebang = Uint8Array([]);
+    testWholeShebang.push(testMidiConfig);
+    let testTB = testTB.value.parseInt(16);
+    pageHexClientView.textContent = testTB;
+}
+testMidi();
+document.getElementById("testdownload").addEventListener('click',function testDownload() {
+    let testData = "Bla bla bla";
+    let testBlob = new Blob([testData], { type: "text/plain" });
+    let testUrl = document.createElement("a");
+    testUrl.href = URL.createObjectURL(testBlob);
+    testUrl.download = "test.txt";
+    testUrl.click();
+    URL.revokeObjectURL(testUrl.href)
+})
