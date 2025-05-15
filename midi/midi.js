@@ -73,13 +73,31 @@ const testTB = document.getElementById("TimeBase");
 const testKey = document.getElementById("key");
 const testVe = document.getElementById("velocity");
 const testDur = document.getElementById("duration");
+const testNoteBuild = document.querySelectorAll("#TimeBase, #key, #velocity, #duration");
+testNoteBuild.forEach(testField => {
+    testField.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            console.log(testNoteBuild.length)
+            if (testNoteBuild.length == 4) {
+                testMidi();
+            } else {
+                console.log("lol fill the blanks in")
+            }
+        }
+    })
+})
 function testMidi() {
-    let testWholeShebang = Uint8Array([]);
-    testWholeShebang.push(testMidiConfig);
-    let testTB = testTB.value.parseInt(16);
-    pageHexClientView.textContent = testTB;
+    let testWholeShebang = []
+    testWholeShebang.splice(1, 0, testMidiConfig.join(" "));
+    console.log(testWholeShebang);
+    let testTBf = testTB.value;
+    testWholeShebang.push(testTBf);
+    console.log(testTBf)
+    console.log(testWholeShebang.length + "o");
+    console.log(testWholeShebang);
+    pageHexClientView.textContent = testWholeShebang
 }
-testMidi();
 document.getElementById("testdownload").addEventListener('click',function testDownload() {
     let testData = "Bla bla bla";
     let testBlob = new Blob([testData], { type: "text/plain" });
