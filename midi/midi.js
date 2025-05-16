@@ -92,7 +92,9 @@ function testMidi() {
     testWholeShebang.splice(1, 0, testMidiConfig.join(" "));
     console.log(testWholeShebang);
     let testTBf = testTB.value;
-    testWholeShebang.push(testTBf);
+    testWholeShebang.push(String(testTBf));
+    testWholeShebang.join(" ");
+
     console.log(testTBf)
     console.log(testWholeShebang.length + "o");
     console.log(testWholeShebang);
