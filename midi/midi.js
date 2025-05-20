@@ -5,10 +5,13 @@ let deciInputVal = Number(deciInput.value);
 deciInput.addEventListener("keydown", deciToVLQ)
 let vlqOutput = document.getElementById("vlqOutput");
 let vlqHex = [""];
-function deciToVLQ(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
+function deciToVLQ(num = deciInputVal) {
+    let deciInputVal = num;
+    if (typeof(num) != "number") {
         deciInputVal = Number(deciInput.value);
+    } else {
+        deciInputVal = Number(num);
+    }
         bin = Array.from(deciInputVal.toString(2));
         binNum = [];
         vlqHex = [];
@@ -51,9 +54,15 @@ function deciToVLQ(event) {
             }
             vlqHex.push("0x" + String(doubleDigitCheck));
         }
-        justHex = hexSolve(deciInputVal);
+    justHex = String(hexSolve(deciInputVal));
+    if (typeof (num) != "number") {
         vlqOutput.textContent = vlqHex.join(" ") + "  hexadecimal: " + justHex;
-        
+    } else {
+        if (num < 128) {
+            return ("0x" + justHex);
+        } else {
+            return vlqHex.join(" ");
+        }
     }
 }
 function hexSolve(num) {
@@ -103,29 +112,44 @@ testNoteBuild.forEach(testField => {
         }
     })
 })
+let testMidiOut = [];
+let TrackRam = [];
 function testMidi() {
     let testWholeShebang = []
     let testHexSep = [];
     let testTrack = [];
-    testWholeShebang.splice(1, 0, testMidiConfig.join(" "));
+    testWholeShebang.splice(1, 0, testMidiConfig);
+    testMidiOut.push(testWholeShebang.join(" "));
     console.log(testWholeShebang);
     let testTBf = Number(testTB.value);
     testHexSep = parseHex(testTBf);
     testWholeShebang.push(testHexSep.join(" "));
     testWholeShebang.join(" ");
+    testMidiOut.push(testHexSep.join(" "));
+    testMidiOut.join(" ");
     console.log(testTBf)
     console.log(testWholeShebang.length + "o");
     console.log(testWholeShebang);//after set time base start track thing, length is last calculated after user confirm output
-    pageHexClientView.textContent = testWholeShebang.join(" ") + " " + "Track header"
+    pageHexClientView.textContent = testWholeShebang + " " + "Track header"
     testTrack.push(testMidiTrackConfig.join(" "));
     let testKeyf = parseHex(Number(testKey.value));
+    let testVef = parseHex(Number(testVe.value));
+    let testDurf = deciToVLQ(Number(Math.round(Number((testDur.value / 32) * 256))));
+    //After some tweaking deciToVLQ works both case(the html convert & function call)
+    //so midi thing first Dur than key then velocity and this test case assume the dur is the length of note
+    //so it will be 0x00 + 0x90(noteOn event) + key + velocity then dur + 0x80(noteOff event) + key + 0x00(velocity 0 = mute)
+    let noteRam = ["0x00", "0x90"];
+    noteRam.push(testKeyf.join(" "), testVef.join(" "), testDurf, "0x80", testKeyf.join(" "), "0x00");
+    TrackRam.push(noteRam);
+    document.getElementById("test").textContent = TrackRam
 }
-document.getElementById("testdownload").addEventListener('click',function testDownload() {
-    let testData = "Bla bla bla";
-    let testBlob = new Blob([testData], { type: "text/plain" });
+document.getElementById("testConfirm").addEventListener('click',function testConfirm() {
+    let testTrackLength = TrackRam.length;
+    document.getElementById("testFinalCheck").textContent = testTrackLength;
+    let testBlob = new Blob([testData], { type: "audio/midi" });
     let testUrl = document.createElement("a");
     testUrl.href = URL.createObjectURL(testBlob);
-    testUrl.download = "test.txt";
+    testUrl.download = "Untitled.mid";
     testUrl.click();
     URL.revokeObjectURL(testUrl.href)
 })
