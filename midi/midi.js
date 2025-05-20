@@ -34,7 +34,6 @@ function deciToVLQ(event) {
             for (let n = 0; n < 7 - bin.length; n++) {
                 binNum.unshift(0);
             }
-            
             binNum.unshift(1);
             bin7sep.unshift(binNum.join(""));
         } else {
@@ -50,7 +49,7 @@ function deciToVLQ(event) {
             if (doubleDigitCheck.length == 1) {
                 doubleDigitCheck = "0" + doubleDigitCheck;
             }
-            vlqHex.push(doubleDigitCheck);
+            vlqHex.push("0x" + String(doubleDigitCheck));
         }
         justHex = hexSolve(deciInputVal);
         vlqOutput.textContent = vlqHex.join(" ") + "  hexadecimal: " + justHex;
@@ -64,11 +63,28 @@ function hexSolve(num) {
     }
     return hex;
 }
+function parseHex(deci) {
+    //this functions returns a proper hex number in 0x00 format (from deci)
+    let hex = deci.toString(16);
+    if (hex.length % 2 != 0) {
+        hex = "0" + hex;
+    }
+    hex = hex.match(/.{1,2}/g);
+    let returnHex = [];
+    for (let i = 0; i < hex.length; i++){
+        let insert0 = 0;
+        if (hex[i].length == 1) {
+            insert0 = "0" + String(hex[i]);
+        }
+        returnHex.push("0x" + hex[i]);
+    }
+    return (returnHex);
+}
 //testing midi note thing and download file and stuff, proof of concept
-const testMidiConfig = [0x4D, 0x54, 0x68, 0x64, 0x00, 0x00, 0x00, 0x06, 0x00, 0x01, 0x00, 0x01]//First 4 byte header,fixed 00000006,mode (0=single track,1=multi track,2=multi song),num of tracks(is 1)
-const testMidiTrack = [0x4D, 0x54, 0x72, 0x68]//Track header
+const testMidiConfig = ["0x4D","0x54","0x68","0x64","0x00","0x00","0x00","0x06","0x00","0x01","0x00","0x01"]//First 4 byte header,fixed 00000006,mode (0=single track,1=multi track,2=multi song),num of tracks(is 1)
+const testMidiTrack = ["0x4D","0x54","0x72","0x68"]//Track header
 const pageHexClientView = document.getElementById("testHexOut");
-const testMidiTrackConfig = [0x00,0xFF,0x51,0x03,0x07,0xA1,0x20,0x00,0xFF,0x58,0x04,0x04,0x02,0x18,0x08]//tempo 120,time signature 4/4,and the midi clock that probably don't matter
+const testMidiTrackConfig = ["0x00","0xFF","0x51","0x03","0x07","0xA1","0x20","0x00","0xFF","0x58","0x04","0x04","0x02","0x18","0x08"]//tempo 120","time signature 4/4","and the midi clock that probably don't matter
 const testTB = document.getElementById("TimeBase");
 const testKey = document.getElementById("key");
 const testVe = document.getElementById("velocity");
@@ -89,16 +105,20 @@ testNoteBuild.forEach(testField => {
 })
 function testMidi() {
     let testWholeShebang = []
+    let testHexSep = [];
+    let testTrack = [];
     testWholeShebang.splice(1, 0, testMidiConfig.join(" "));
     console.log(testWholeShebang);
-    let testTBf = testTB.value;
-    testWholeShebang.push(String(testTBf));
+    let testTBf = Number(testTB.value);
+    testHexSep = parseHex(testTBf);
+    testWholeShebang.push(testHexSep.join(" "));
     testWholeShebang.join(" ");
-
     console.log(testTBf)
     console.log(testWholeShebang.length + "o");
-    console.log(testWholeShebang);
-    pageHexClientView.textContent = testWholeShebang
+    console.log(testWholeShebang);//after set time base start track thing, length is last calculated after user confirm output
+    pageHexClientView.textContent = testWholeShebang.join(" ") + " " + "Track header"
+    testTrack.push(testMidiTrackConfig.join(" "));
+    let testKeyf = parseHex(Number(testKey.value));
 }
 document.getElementById("testdownload").addEventListener('click',function testDownload() {
     let testData = "Bla bla bla";
