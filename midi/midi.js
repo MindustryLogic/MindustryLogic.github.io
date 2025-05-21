@@ -119,7 +119,7 @@ function testMidi() {
     let testWholeShebang = []
     let testHexSep = [];
     let testTrack = [];
-    testWholeShebang.splice(1, 0, testMidiConfig.join(" "));
+    testWholeShebang.push(testMidiConfig.join(" "));
     let testTBf = Number(testTB.value);
     testHexSep = parseHex(testTBf);
     testWholeShebang.push(testHexSep.join(" "));
@@ -146,12 +146,15 @@ function testMidi() {
     document.getElementById("test").textContent = TrackRam
 }
 document.getElementById("testConfirm").addEventListener('click',function testConfirm() {
-    let testTrackLength = TrackRam.toString()
+    let testTrackThing = TrackRam
+    testTrackThing.join(" ");
+    let testTrackLength = testTrackThing.toString()
+    document.getElementById("whole").textContent = testTrackLength
     console.log(testTrackLength.length+"ohk");
     console.log(testTrackLength);
     let annoyingBypass = testTrackLength.split(",").join(" ");
-    //alright so basiclly parseHex but it give 4 bytes
-    let testTLength = ((testTrackLength.length +1)/5 +4).toString(16)
+    //alright so basically parseHex but it give 4 bytes
+    let testTLength = ((testTrackLength.length +1 + 75)/5 +4).toString(16)
     console.log(testTLength);
     if (testTLength.length % 2 != 0) {
         testTLength = "0" + testTLength;
@@ -176,7 +179,7 @@ document.getElementById("testConfirm").addEventListener('click',function testCon
     //oh this fucks up the file ^
     console.log(String(parseHex((testTrackLength.length + 1) / 5 + 4)) + " " + "should be 14");
     //how do i fill up the 0
-    testMidiOut = testMidiOut + " " + annoyingBypass;
+    testMidiOut = testMidiOut + " " + testMidiTrackConfig.join(" ") + " " + annoyingBypass;
     console.log(annoyingBypass)
     console.log(String(parseHex((testTrackLength.length + 1) / 5)));
     testMidiOut = testMidiOut + " " + "0x00" + " " + "0xFF" + " " + "0x2F" + " " + "0x00";
@@ -199,5 +202,5 @@ document.getElementById("testDownload").addEventListener("click", function () {
     testUrl.click();
     URL.revokeObjectURL(testUrl.href)
 })
-//alrigth cool test fucking works very nice.
+//alright cool test fucking works very nice.
 //Time to find a graphics library to set up gui for actual midi stuff
