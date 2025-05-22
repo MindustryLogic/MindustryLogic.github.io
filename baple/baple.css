@@ -43,7 +43,7 @@ p {
     left:0px;
     width:var(--window-width);
     height:var(--window-height);
-    background-color:rgba(0,0,255,0.5);
+    background-color:rgba(0,0,255,0.3);
     border-style:solid;
     border-width:1px;
     display:block;

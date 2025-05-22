@@ -130,7 +130,6 @@ function testMidi() {
     console.log(testMidiOut+"testMidiOut");
     console.log(testWholeShebang.length + "o");
     console.log(testWholeShebang);//after set time base start track thing, length is last calculated after user confirm output
-    pageHexClientView.textContent = testWholeShebang + " " + "Track header"
     testTrack.push(testMidiTrackConfig.join(" "));
     console.log(testTrack + " " + "testTrack")
     let testKeyf = parseHex(Number(testKey.value));
@@ -143,13 +142,11 @@ function testMidi() {
     let noteRam = ["0x00", "0x90"];
     noteRam.push(testKeyf.join(" "), testVef.join(" "), testDurf, "0x80", testKeyf.join(" "), "0x00");
     TrackRam.push(noteRam);
-    document.getElementById("test").textContent = TrackRam
 }
 document.getElementById("testConfirm").addEventListener('click',function testConfirm() {
     let testTrackThing = TrackRam
     testTrackThing.join(" ");
     let testTrackLength = testTrackThing.toString()
-    document.getElementById("whole").textContent = testTrackLength
     console.log(testTrackLength.length+"ohk");
     console.log(testTrackLength);
     let annoyingBypass = testTrackLength.split(",").join(" ");
@@ -204,3 +201,4 @@ document.getElementById("testDownload").addEventListener("click", function () {
 })
 //alright cool test fucking works very nice.
 //Time to find a graphics library to set up gui for actual midi stuff
+/*Main process*/
