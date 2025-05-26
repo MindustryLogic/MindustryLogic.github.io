@@ -1,10 +1,10 @@
 //so yea midi stuff
 //variable length quantity converter(deci to hex)
-const deciInput = document.getElementById("deciInput");
+/*const deciInput = document.getElementById("deciInput");
 let deciInputVal = Number(deciInput.value);
 deciInput.addEventListener("keydown", deciToVLQ)
 let vlqOutput = document.getElementById("vlqOutput");
-let vlqHex = [""];
+let vlqHex = [""];*/
 function deciToVLQ(num = deciInputVal) {
     let deciInputVal = num;
     if (typeof(num) != "number") {
@@ -88,6 +88,20 @@ function parseHex(deci) {
         returnHex.push("0x" + hex[i]);
     }
     return (returnHex);
+}
+function parseHexToDeci(whatever) {
+    if (typeof (whatever) == "string") {
+        if (whatever.startsWith("0x")) {
+            return (Number(whatever))
+        } else {
+            return (Number("0x" + whatever));
+        }
+    }
+    if (typeof (whatever) == "number") {
+        return (whatever);
+    }
+    //if (typeof (whatever) == "Array") {
+        //let toDeci = [];}
 }
 //testing midi note thing and download file and stuff, proof of concept
 const testMidiConfig = ["0x4D","0x54","0x68","0x64","0x00","0x00","0x00","0x06","0x00","0x01","0x00","0x01"]//First 4 byte header,fixed 00000006,mode (0=single track,1=multi track,2=multi song),num of tracks(is 1)
@@ -203,21 +217,134 @@ document.getElementById("testDownload").addEventListener("click", function () {
 //alright cool test fucking works very nice.
 //Time to find a graphics library to set up gui for actual midi stuff
 /*Main process*/
+const FileLoaded = new Event("FileLoaded");
 const MidiFileIn = document.getElementById("MidiIn");
 let MidiFileInHex = [];
 MidiFileIn.addEventListener("change", function () {
-    let file = MidiFileIn.files["0"];
+    let file = MidiFileIn.files[0];
     let reader = new FileReader();
     let buffer = [];
     reader.onload = function (e) {
         let arrayBuffer = e.target.result;
         let byteArray = new Uint8Array(arrayBuffer);
         for (let n = 0; n < byteArray.length; n++){
-            buffer.push(parseHex(byteArray[n]));
+            buffer.push(parseHex(byteArray[n]).join(" "));
+            MidiFileInHex.push(parseHex(byteArray[n]).join(" "));
         }
         console.log(buffer);
+        console.log(MidiFileInHex);
     }
     reader.readAsArrayBuffer(file);
-    MidiFileInHex = buffer;
+    //Oh yea right readAsArrayBuffer is async so i need to heckin' setTimeout
+    //Yea imma make it 1 whole second lol
+    console.log(MidiFileInHex);
+    console.log(reader)
+    setTimeout(function () {
+        console.log("Timeout done");
+        console.log(MidiFileInHex);
+        window.dispatchEvent(FileLoaded);
+    }, 1000);
+})
+//how do i sent a event again
+window.addEventListener("FileLoaded", function () {
     document.getElementById("MidiInDebug").textContent = MidiFileInHex
 })
+window.addEventListener("FileLoaded", parseMidi);
+function parseMidi() {
+    //This parse midi file like the name suggest
+    //find midi header if not found throw error(in console)
+    //find track header and end if not found also throw error(in console)
+    //basiclly if find things wrong throw error 
+    //use MidiFileInHex.
+    //first up restructure the array and sep it
+    let sepMidi = [];
+    let sepCheck = [];
+    let problem = false;
+    let doneErrorCheck = false;
+    for (let i = 0; i < MidiFileInHex.length; i++) {
+        if (problem == false) {
+            if (sepMidi.length == MidiFileInHex.length) {
+                doneErrorCheck = true;
+            }
+            try {
+                if (problem == true) {
+                    throw new SyntaxError("Midi file contain improper byte arrangement(not following standard MIDI file format) you should probably check the bytes");
+                }
+                sepMidi.push(Number(MidiFileInHex[i]))
+                switch (i) {
+                    case 3:
+                        if (sepMidi[0] + sepMidi[1] + sepMidi[2] + sepMidi[3] != 365) {
+                            //check does first 4 byte is MThd
+                            console.error("This is not a midi header");
+                            problem = true;
+                        }
+                        break;
+                    case 7:
+                        if (sepMidi[4] + sepMidi[5] + sepMidi[6] + sepMidi[7] != 6) {
+                            //check is it 6
+                            console.error("byte 4 to 7 must be 00 00 00 06");
+                            problem = true;
+                        }
+                        break;
+                    case 9:
+                        if (sepMidi[9] < 3 && sepMidi[9] < 0) {
+                            //check format
+                            console.error("byte 8 is not 0,1 or 2, cannot get midi type");
+                            problem = true;
+                        }
+                        break;
+                    case 11:
+                        //check num. of tracks
+                        if (sepMidi[9] = 0 && sepMidi[11] != 1) {
+                            console.error("The mode is single track only and you either don't have a track or more than 1 track")
+                            problem = true;
+                        } else if (sepMidi[11] < 1) {
+                            console.error("Dude where is your track i can't find it");
+                            problem = true;
+                        }
+                        break;
+                    case 13:
+                        //check time base 
+                        if (sepMidi[12] + sepMidi[13] > 510 || sepMidi[12] + sepMidi[13] < 1) {
+                            console.error("I am pretty sure time base is not negative(or 0) or more than 510");
+                            problem = true;
+                        }
+                        break;
+                    //then i will only check does track header exist and does the track end exist
+                    case 17:
+                        if (sepMidi[14] + sepMidi[15] + sepMidi[16] + sepMidi[17] != 382) {
+                            console.error("Where is track header");
+                            problem = true;
+                        }
+                        break;
+                }
+            
+            } catch (e) {
+                console.error(e);
+                problem = true;
+            }
+        }
+        if (problem == true) {
+            break;
+        };
+    };
+    
+    if (doneErrorCheck == true) {
+        //well if you see clearly you will realise that this only check for track end 1 time only because i don't think people will actually make a midi file in machine code but i will cover it somehow
+        try {
+            if (sepMidi[sepMidi.length] + sepMidi[sepMidi.length - 1] + sepMidi[sepMidi.length - 2] != 302) {
+                console.error("I guess your song last forever");
+                problem = true
+            }
+            if (problem == true) {
+                throw new SyntaxError("Midi file contain improper byte arrangement(not following standard MIDI file format) you should probably check the bytes");
+            }
+        } catch (e) {
+            console.error(e);
+            problem = true;
+        }
+    };
+    //parse timeBase
+    let timeBase = Number("0x" + Number(MidiFileInHex[12]).toString(16) + MidiFileInHex[13].replace("0x",""));
+    console.log(timeBase)
+}
