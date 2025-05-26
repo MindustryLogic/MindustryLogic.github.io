@@ -99,7 +99,7 @@ const testKey = document.getElementById("key");
 const testVe = document.getElementById("velocity");
 const testDur = document.getElementById("duration");
 const testNoteBuild = document.querySelectorAll("#TimeBase, #key, #velocity, #duration");
-testNoteBuild.forEach(testField => {
+/*testNoteBuild.forEach(testField => {
     testField.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -198,7 +198,8 @@ document.getElementById("testDownload").addEventListener("click", function () {
     testUrl.download = "Untitled.mid";
     testUrl.click();
     URL.revokeObjectURL(testUrl.href)
-})
+})*/
+//All commented out for future reference and i feel like i need it a lot
 //alright cool test fucking works very nice.
 //Time to find a graphics library to set up gui for actual midi stuff
 /*Main process*/
