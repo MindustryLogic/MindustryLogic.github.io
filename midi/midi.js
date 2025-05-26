@@ -92,14 +92,14 @@ function parseHex(deci) {
 //testing midi note thing and download file and stuff, proof of concept
 const testMidiConfig = ["0x4D","0x54","0x68","0x64","0x00","0x00","0x00","0x06","0x00","0x01","0x00","0x01"]//First 4 byte header,fixed 00000006,mode (0=single track,1=multi track,2=multi song),num of tracks(is 1)
 const testMidiTrack = ["0x4D","0x54","0x72","0x6B"]//Track header
-const pageHexClientView = document.getElementById("testHexOut");
+//const pageHexClientView = document.getElementById("testHexOut");
 const testMidiTrackConfig = ["0x00","0xFF","0x51","0x03","0x07","0xA1","0x20","0x00","0xFF","0x58","0x04","0x04","0x02","0x18","0x08"]//tempo 120","time signature 4/4","and the midi clock that probably don't matter
-const testTB = document.getElementById("TimeBase");
+/*const testTB = document.getElementById("TimeBase");
 const testKey = document.getElementById("key");
 const testVe = document.getElementById("velocity");
 const testDur = document.getElementById("duration");
 const testNoteBuild = document.querySelectorAll("#TimeBase, #key, #velocity, #duration");
-/*testNoteBuild.forEach(testField => {
+testNoteBuild.forEach(testField => {
     testField.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -203,3 +203,21 @@ document.getElementById("testDownload").addEventListener("click", function () {
 //alright cool test fucking works very nice.
 //Time to find a graphics library to set up gui for actual midi stuff
 /*Main process*/
+const MidiFileIn = document.getElementById("MidiIn");
+let MidiFileInHex = [];
+MidiFileIn.addEventListener("change", function () {
+    let file = MidiFileIn.files["0"];
+    let reader = new FileReader();
+    let buffer = [];
+    reader.onload = function (e) {
+        let arrayBuffer = e.target.result;
+        let byteArray = new Uint8Array(arrayBuffer);
+        for (let n = 0; n < byteArray.length; n++){
+            buffer.push(parseHex(byteArray[n]));
+        }
+        console.log(buffer);
+    }
+    reader.readAsArrayBuffer(file);
+    MidiFileInHex = buffer;
+    document.getElementById("MidiInDebug").textContent = MidiFileInHex
+})
