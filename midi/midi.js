@@ -65,6 +65,24 @@ function deciToVLQ(num = deciInputVal) {
         }
     }
 }
+function vlqToHexArray(vlqArray) {
+    if (!Array.isArray(vlqArray) || vlqArray.length === 0) return [];
+
+    // Decode VLQ to integer
+    let value = 0;
+    for (let i = 0; i < vlqArray.length; i++) {
+        value = (value << 7) | (vlqArray[i] & 0x7F);
+        if ((vlqArray[i] & 0x80) === 0) break;
+    }
+
+    // Convert integer to hex array in 0x00 format
+    let hex = value.toString(16);
+    if (hex.length % 2 !== 0) hex = "0" + hex;
+    let hexArray = [];
+        hexArray = hex.match(/.{1,2}/g).map(byte => "0x" + byte);
+
+    return hexArray;
+}//AI stuff it works but i am not sure how it works
 function hexSolve(num) {
     let hex = num.toString(16);
     if (hex.length % 2 != 0) {
@@ -251,7 +269,7 @@ window.addEventListener("FileLoaded", function () {
     document.getElementById("MidiInDebug")
 })
 window.addEventListener("FileLoaded", parseMidi);
-let 
+
 function parseMidi() {
     //This parse midi file like the name suggest
     //find midi header if not found throw error(in console)
@@ -354,24 +372,66 @@ function parseMidi() {
     //byte 19-22(index 18-21) should be chunk length
     let parseBuffer = [];
     let deltaTimeId = [];
-    let metaEventId = [];
+    let metaEventId = 0;
     let trackLength = 0;
+    let trackCount = 0;
     let cIndex = 0;
     trackLength = Number(MidiFileInHex[18] + MidiFileInHex[19].replace("0x", "") + MidiFileInHex[20].replace("0x", "") + MidiFileInHex[21].replace("0x", ""));
+    console.log(trackLength +"TL")
     //check end track event
     //oh wait end track event is 4 to 7 byte long
     //wait again chunk length includes the track end event
-    cIndex = 21;
-    if (Number(MidiFileInHex[cIndex + trackLength - 2] + MidiFileInHex[cIndex + trackLength - 1].replace("0x", "") + MidiFileInHex[cIndex + trackLength].replace("0x", "")) != 302) {
+    cIndex = 22;
+    if (Number(MidiFileInHex[cIndex + trackLength - 3] + MidiFileInHex[cIndex + trackLength - 2].replace("0x", "") + MidiFileInHex[cIndex + trackLength-1].replace("0x", "")) != 16723712) {
         console.error("Track end event not found and/or chunk length is wrong")
-    };
+    } else {
+        trackCount = MidiFileInHex.toString().match(/0xff,0x2f,0x00/g).length;
+        console.log(trackCount)
+    }
     //now go back
-    for (let i = cIndex; i < cIndex + trackLength; i++){
-        deltaTimeId.push(MidiFileInHex[i]);
-        if (MidiFileInHex[i] == "0xff") {
+    let isDeltaTime = true;
+    let dTlength = 0;
+    for (let i = cIndex; i < (cIndex + trackLength) - 1; i++){
+        if (isDeltaTime == true) {
+            deltaTimeId.push(MidiFileInHex[i]);
+        }
+        switch (metaEventId) {
+            case 1:
+                if (deltaTimeId.length > dTlength + 4) {
+                    deltaTimeId = [];
+                    dTlength = 0;
+                    metaEventId = 0;
+                }
+                break;
+            case 2:
+                if (deltaTimeId.length > dTlength + 6) {
+                    deltaTimeId = [];
+                    dTlength = 0;
+                    metaEventId = 0;
+                }
+                break;
+
+        }
+        console.log(deltaTimeId)
+        if (deltaTimeId.toString().includes("0xff") == true) {
             //check what meta event
             switch (MidiFileInHex[i + 1] + MidiFileInHex[i + 2]) {
-                case "0xff0x51":
+                case "0x510x03":
+                    console.log("tempo found")
+                    console.log("0x" + (vlqToHexArray(deltaTimeId)))
+                    parseBuffer.push("dT=" + Number("0x" + (vlqToHexArray(deltaTimeId).slice(0,-1)).join("").replace("0x", ""))+"tempo="+Number("0x" +MidiFileInHex[i + 3].replace("0x", "") + MidiFileInHex[i + 4].replace("0x", "") + MidiFileInHex[i + 5].replace("0x", "")));
+                    console.log(parseBuffer);
+                    isDeltaTime = true;
+                    metaEventId = 1;
+                    dTlength = deltaTimeId.length;
+                    break;
+                case "0x580x04":
+                    console.log("time signature found");
+                    console.log("0x" + (vlqToHexArray(deltaTimeId)))
+                    parseBuffer.push("dT=" + Number("0x" + (vlqToHexArray(deltaTimeId).slice(0,-1)).join("").replace("0x", "")) + "timeSig=" + MidiFileInHex[i + 3] + "/" + MidiFileInHex[i + 4] + " clocksPerTick=" + MidiFileInHex[i + 5] + " notated32ndNote=" + MidiFileInHex[i + 6]);
+                    console.log(parseBuffer);
+                    metaEventId = 2;
+                    dTlength = deltaTimeId.length
                     break;
             }
             
