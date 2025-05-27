@@ -220,6 +220,7 @@ document.getElementById("testDownload").addEventListener("click", function () {
 const FileLoaded = new Event("FileLoaded");
 const MidiFileIn = document.getElementById("MidiIn");
 let MidiFileInHex = [];
+let parsedMidi = [];
 MidiFileIn.addEventListener("change", function () {
     let file = MidiFileIn.files[0];
     let reader = new FileReader();
@@ -247,9 +248,10 @@ MidiFileIn.addEventListener("change", function () {
 })
 //how do i sent a event again
 window.addEventListener("FileLoaded", function () {
-    document.getElementById("MidiInDebug").textContent = MidiFileInHex
+    document.getElementById("MidiInDebug")
 })
 window.addEventListener("FileLoaded", parseMidi);
+let 
 function parseMidi() {
     //This parse midi file like the name suggest
     //find midi header if not found throw error(in console)
@@ -346,5 +348,33 @@ function parseMidi() {
     };
     //parse timeBase
     let timeBase = Number("0x" + Number(MidiFileInHex[12]).toString(16) + MidiFileInHex[13].replace("0x",""));
-    console.log(timeBase)
+    console.log("TimeBase="+timeBase);
+    //How to differentiate delta time and note event
+    //check meta event first anyway
+    //byte 19-22(index 18-21) should be chunk length
+    let parseBuffer = [];
+    let deltaTimeId = [];
+    let metaEventId = [];
+    let trackLength = 0;
+    let cIndex = 0;
+    trackLength = Number(MidiFileInHex[18] + MidiFileInHex[19].replace("0x", "") + MidiFileInHex[20].replace("0x", "") + MidiFileInHex[21].replace("0x", ""));
+    //check end track event
+    //oh wait end track event is 4 to 7 byte long
+    //wait again chunk length includes the track end event
+    cIndex = 21;
+    if (Number(MidiFileInHex[cIndex + trackLength - 2] + MidiFileInHex[cIndex + trackLength - 1].replace("0x", "") + MidiFileInHex[cIndex + trackLength].replace("0x", "")) != 302) {
+        console.error("Track end event not found and/or chunk length is wrong")
+    };
+    //now go back
+    for (let i = cIndex; i < cIndex + trackLength; i++){
+        deltaTimeId.push(MidiFileInHex[i]);
+        if (MidiFileInHex[i] == "0xff") {
+            //check what meta event
+            switch (MidiFileInHex[i + 1] + MidiFileInHex[i + 2]) {
+                case "0xff0x51":
+                    break;
+            }
+            
+        }
+    }
 }

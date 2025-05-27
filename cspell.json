@@ -9,6 +9,9 @@
         "submode",
         "Rømer",
         "Conv",
-        "deci"],
+        "deci",
+        "returntest",
+        "Keyf",
+    "Durf"],
     "import": []
 }
