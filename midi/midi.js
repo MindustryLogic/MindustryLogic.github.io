@@ -365,76 +365,70 @@ function parseMidi() {
         }
     };
     //parse timeBase
-    let timeBase = Number("0x" + Number(MidiFileInHex[12]).toString(16) + MidiFileInHex[13].replace("0x",""));
-    console.log("TimeBase="+timeBase);
+    let timeBase = Number("0x" + Number(MidiFileInHex[12]).toString(16) + MidiFileInHex[13].replace("0x", ""));
+    console.log("TimeBase=" + timeBase);
     //How to differentiate delta time and note event
     //check meta event first anyway
     //byte 19-22(index 18-21) should be chunk length
-    let parseBuffer = [];
-    let deltaTimeId = [];
-    let metaEventId = 0;
-    let trackLength = 0;
+    console.log(MidiFileInHex.toString(""));
     let trackCount = 0;
-    let cIndex = 0;
-    trackLength = Number(MidiFileInHex[18] + MidiFileInHex[19].replace("0x", "") + MidiFileInHex[20].replace("0x", "") + MidiFileInHex[21].replace("0x", ""));
-    console.log(trackLength +"TL")
-    //check end track event
-    //oh wait end track event is 4 to 7 byte long
-    //wait again chunk length includes the track end event
-    cIndex = 22;
-    if (Number(MidiFileInHex[cIndex + trackLength - 3] + MidiFileInHex[cIndex + trackLength - 2].replace("0x", "") + MidiFileInHex[cIndex + trackLength-1].replace("0x", "")) != 16723712) {
-        console.error("Track end event not found and/or chunk length is wrong")
-    } else {
-        trackCount = MidiFileInHex.toString().match(/0xff,0x2f,0x00/g).length;
-        console.log(trackCount)
+    let trackLength = 0
+    trackCount = MidiFileInHex.toString("").match(/0x4d,0x54,0x72,0x6b/g).length;
+    let tracks = [];
+    let tracksSplit = [];
+    for (let i = 14; i < MidiFileInHex.length; i++) {
+        tracks.push(MidiFileInHex[i]);
     }
-    //now go back
-    let isDeltaTime = true;
-    let dTlength = 0;
-    for (let i = cIndex; i < (cIndex + trackLength) - 1; i++){
-        if (isDeltaTime == true) {
-            deltaTimeId.push(MidiFileInHex[i]);
-        }
-        switch (metaEventId) {
-            case 1:
-                if (deltaTimeId.length > dTlength + 4) {
-                    deltaTimeId = [];
-                    dTlength = 0;
-                    metaEventId = 0;
+    console.log(tracks);
+    trackLength = (tracks.toString("").indexOf("0xff,0x2f,0x00")) / 5 + 3
+    console.log(tracks.toString("").indexOf("0xff,0x2f,0x00"));
+    console.log(trackLength);
+    for (let n = 0; n < trackCount; n++) {
+        let trackMergeSep = [];
+        for (let i = 0; i < trackLength; i++) {
+            trackMergeSep.push(tracks[0]);
+            tracks.shift();
+        };
+        tracksSplit.push(trackMergeSep);
+        trackLength = (tracks.toString("").indexOf("0xff,0x2f,0x00")) / 5 + 3;
+    } console.log(tracksSplit);
+    //separated now what
+    let trackParse = []; //hexadecimal
+    let trackComprehend = [];//in string lol
+    for (let i = 0; i < tracksSplit.length; i++){
+        let splitTrack = tracksSplit[i]
+        for (let index = 0; index < tracksSplit[i].length; index++){
+            //first sep dT from event
+            if (splitTrack[index] == "0xff") {
+                if (splitTrack[index + 1] == "0x7f" && splitTrack[index + 3] == "0x7f") {
+                    //it is da data specific stuff ignore it but still need to account for length
+                    //i am gonna leave it blank so here's a TODO: FIND THIS SUCKER AND NUKE IT FROM THE FACE OF THIS UNIVERSE
                 }
-                break;
-            case 2:
-                if (deltaTimeId.length > dTlength + 6) {
-                    deltaTimeId = [];
-                    dTlength = 0;
-                    metaEventId = 0;
+                //skip ff 00 02(seq.num), ff 01 (text event), ff 02 (copyright notice), ff 05(lyrics), ff 06(marker(what does it mean)), ff 07(cue point) and ff 7f (program name). supposedly after that is the length of the thing so just yeet the entire thing to trackParse
+                if (splitTrack[index + 1] == "0x00" || splitTrack[index + 1] == "0x01" || splitTrack[index + 1] == "0x02" || splitTrack[index + 1] == "0x05" || splitTrack[index + 1] == "0x06" || splitTrack[index + 1] == "0x07" || splitTrack[index + 1] == "0x7f") {
+                    let length = Number(splitTrack[index + 2]);
+                    for (let n = 0; n < length; n++) {
+                        trackParse.push(splitTrack[index + n]);
+                    }
+                    index += length;
                 }
-                break;
-
-        }
-        console.log(deltaTimeId)
-        if (deltaTimeId.toString().includes("0xff") == true) {
-            //check what meta event
-            switch (MidiFileInHex[i + 1] + MidiFileInHex[i + 2]) {
-                case "0x510x03":
-                    console.log("tempo found")
-                    console.log("0x" + (vlqToHexArray(deltaTimeId)))
-                    parseBuffer.push("dT=" + Number("0x" + (vlqToHexArray(deltaTimeId).slice(0,-1)).join("").replace("0x", ""))+"tempo="+Number("0x" +MidiFileInHex[i + 3].replace("0x", "") + MidiFileInHex[i + 4].replace("0x", "") + MidiFileInHex[i + 5].replace("0x", "")));
-                    console.log(parseBuffer);
-                    isDeltaTime = true;
-                    metaEventId = 1;
-                    dTlength = deltaTimeId.length;
-                    break;
-                case "0x580x04":
-                    console.log("time signature found");
-                    console.log("0x" + (vlqToHexArray(deltaTimeId)))
-                    parseBuffer.push("dT=" + Number("0x" + (vlqToHexArray(deltaTimeId).slice(0,-1)).join("").replace("0x", "")) + "timeSig=" + MidiFileInHex[i + 3] + "/" + MidiFileInHex[i + 4] + " clocksPerTick=" + MidiFileInHex[i + 5] + " notated32ndNote=" + MidiFileInHex[i + 6]);
-                    console.log(parseBuffer);
-                    metaEventId = 2;
-                    dTlength = deltaTimeId.length
-                    break;
+                //prepare for massive console spam
+                switch (splitTrack[index + 1]) {
+                    case "0x03":
+                        //is track name
+                        console.log("track name");
+                        let trackNameLength = Number(splitTrack[index + 2]);;
+                        let trackName = [];
+                        for (let name = 0; name < trackNameLength; name++) {
+                            //yes this expect ASCII i blame it on user for wrong display name
+                            trackName.push(String.fromCharCode(parseHexToDeci(splitTrack[index + 3 + name])));
+                        }
+                        console.log("name=" + trackName.join(""));
+                        //dT is assumed to be 0 even if the file says otherwise
+                        trackComprehend.push("dT=0" + "ff03" + trackName.join(""));
+                }
             }
-            
         }
     }
+    
 }
