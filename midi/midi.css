@@ -1,5 +1,5 @@
 :root{
-    
+    --Track-offset:0px;
 }
 .vlq{
     display: inline;
@@ -16,9 +16,51 @@
     height:100vh;
     overflow:hidden;
     background-color:rgba(232,227,200,1);
-    color:rgb(255,0,0);
     border-width:6px;
     border-color:magenta;
     display:block;
     z-index:1;
+}
+.Main #FileCtrl{
+    width: auto;
+    height: auto;
+    display: inline-block;
+    margin: 0;
+}
+.Main #FileCtrl input{
+    display: none;
+}
+.Main #FileCtrl label{
+    text-align: left;
+    display: inline;
+}
+.Main #FileCtrl button{
+    background-color: rgba(232,227,200,1);
+    border: none;
+    padding: auto;
+    display: inline;
+}
+.Main #MidiZone{
+    top: 25%;
+    position: absolute;
+    width: 70vw;
+    height: 40vh;
+    border-style: solid;
+    display: inline-grid;
+    overflow: scroll;
+}
+.Main #pianoSep{
+    position: absolute;
+    height: 40vh;
+    border: none;
+    margin:0;
+    /*overflow: scroll;*/
+}
+.Main #TrackSep{
+    position: absolute;
+    height: 40vh;
+    border:none;
+    margin-left: var(--Track-offset);
+    /*margin-top: -1620px;*/
+    /*overflow: hidden;*/
 }

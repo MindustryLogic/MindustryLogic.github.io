@@ -29,7 +29,21 @@ all commented out for future reference-->
     <!--main process-->
     <div class="Main">
         <!--for good reference the style will be close to the Midi Editor for windows-->
-        <input type="file" id="MidiIn" name="MidiIn" accept="audio/midi" />
+        <div id="FileCtrl">
+            <label for="MidiIn">Open</label>
+            <input type="file" name="MidiIn" id="MidiIn" accept="audio/midi" />
+            <button type="button" id="Download">Download</button>
+            <!--bruh-->
+        </div>
+        <hr>
+        <div id="MidiZone">
+            <div id="pianoSep">
+                <canvas width="10%" height="1620" id="Piano"></canvas>
+            </div>
+            <div id="TrackSep">
+                <canvas width="10%" height="1620" id="Track"></canvas>
+            </div>
+        </div>
         <div id="MidiInDebug"></div>
     </div>
     <!--major oversight-->
