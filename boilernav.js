@@ -7,7 +7,8 @@ function boilernav() {
     +    '<li><a href="/Py">Nav Hub</a></li>'
     +    '<li><a href="https://github.com/MindustryLogic/Mindustry-Terraria-Overhaul">A mod</a></li>'
     + '<li><a href="/dict">Dict</a></li>'
-    + '<li><a href="/midi">MIDI</a></li>'
+        + '<li><a href="/midi">MIDI</a></li>'
+        + '<li><a href="/game-thing">Game Thing</a></li>'
     +'</ul>'
 }
 function boilernav_but_navhub() {
@@ -19,6 +20,7 @@ function boilernav_but_navhub() {
         +    '<li><a href="https://github.com/MindustryLogic/Mindustry-Terraria-Overhaul">A mod</a></li>'
         +    '<li><a href="/dict">Dict</a></li>'
         +    '<li><a href="/midi">MIDI</a></li>'
+        +    '<li><a href="/game-thing">Game Thing</a></li>'
         +'</ul>'
         +'<div class="fancy">'
         +'<ul>'
