@@ -1,20 +1,20 @@
-export const G = 6.6743015e-11; //in m^3 kg^-1 s^-2, gravitational constant
-export const c = 299792458; //in m s^-1, speed of light
-export const e = 2.71828; //Euler's number, approximation
-export const pi = 3.1415926535897932384626433; //Pi, approximation
-export const phi = (1 + Math.sqrt(5)) / 2; //Golden ratio, approx.
-export const commonSubstance = ["Water", "Air", "Iron", "Copper", "Aluminum"];
+ const G = 6.6743015e-11; //in m^3 kg^-1 s^-2, gravitational constant
+ const c = 299792458; //in m s^-1, speed of light
+ const e = 2.71828; //Euler's number, approximation
+ const pi = 3.1415926535897932384626433; //Pi, approximation
+ const phi = (1 + Math.sqrt(5)) / 2; //Golden ratio, approx.
+ const commonSubstance = ["Ice","Water", "Air", "Iron", "Copper", "Aluminum"];//i forget ICE
 //All assume at 25 C, 1 atm and 0 relative humidity until user specifies otherwise
 //Also assume all are in ideal condition (no heat lost to surroundings, wire have no resistance, etc.)
-export const commonDensity = [9970470283, 1.184, 7874, 8960, 2700]; //in kg m^-3, also don't mess up the structure because i am not properly indexing it
-export const commonMeltPoint = [0, null, 1538, 1084.62, 660.32]; //in C, melting point of common substances (air is null because it is messy)
-export const commonBoilPoint = [100, null, 2861, 2562, 2519]; //in C, boiling point of common substances
-export const commonHeatCap = [4184, 1005, 449, 385, 897]; //in J kg^-1 K^-1, specific heat capacity of common substances
-export const commonLatentHeatMelt = [334000, null, 272000000, 205000000, 397000]; //in J kg^-1, latent heat of fusion of common substances
-export const commonLatentHeatBoil = [2260000, null, 634000000, 513000000, 397000]; //in J kg^-1, latent heat of vaporization of common substances
+ const commonDensity = [916.7,997.0470283, 1.184, 7874, 8960, 2700]; //in kg m^-3, also don't mess up the structure because i am not properly indexing it
+ const commonMeltPoint = [0,0, null, 1538, 1084.62, 660.32]; //in C, melting point of common substances (air is null because it is messy)
+ const commonBoilPoint = [null ,100, null, 2861, 2562, 2519]; //in C, boiling point of common substances
+ const commonHeatCap = [2090,4184, 1005, 449, 385, 897]; //in J kg^-1 K^-1, specific heat capacity of common substances
+ const commonLatentHeatMelt = [334000,334000, null, 272000000, 205000000, 397000]; //in J kg^-1, latent heat of fusion of common substances
+ const commonLatentHeatBoil = [null ,2260000, null, 634000000, 513000000, 397000]; //in J kg^-1, latent heat of vaporization of common substances
 //should be enough for idk middle school when teaching heat transfer or whatever,the user input will come eventurally
-export let eExpand = 0;
-export class initTheExtraConst{
+ let eExpand = 0;
+ class initTheExtraConst{
     constructor() {
     };
     expandE() {
@@ -25,6 +25,6 @@ export class initTheExtraConst{
         eExpand = willBeE;
     }
 }
-export const initPhy = new initTheExtraConst();
+ const initPhy = new initTheExtraConst();
 //ok it is included
 
