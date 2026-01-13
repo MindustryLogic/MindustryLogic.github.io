@@ -202,3 +202,9 @@ ul {
    border-style:solid;
    border-width:1px;
 }
+#eqInput{
+   width:80vw;
+   height:30px;
+   margin-left:7vw;
+   margin-top:2%;
+}
