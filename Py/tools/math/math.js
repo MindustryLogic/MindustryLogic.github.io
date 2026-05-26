@@ -2,19 +2,18 @@
 //also everything is still contained in 1 browser section lol
 
 //eq input purging and eval
-new Event('beginProc');
-const input = document.getElementById(leqInput);
+const proc = new Event("beginProc");
+const input = document.getElementById("eqInput");
 input.addEventListener('keydown', function (run) {
-    run.preventDefault();
     let stuff = input.value
     if (run.key === 'Enter') {
         if (stuff.length != 0) {
             if (stuff.match(/\b[a-zA-Z]+\b/g)) {
-                document.appendChild("Sentence comprehension not implemented yet, reload the page")
+                alert("Sentence comprehension not implemented yet, reload the page")
                 input.value = ""
             } else {
-                window.dispatchEvent(beginProc);
-                console.warning("Proc begin, all logs under this event is to be assumed from the processing")
+                setTimeout(() => { window.dispatchEvent(proc) },50)
+                console.warn("Proc begin, all logs under this event is to be assumed from the processing")
             }
         } else {
             console.log("I ani't hearing no bell")
@@ -23,3 +22,44 @@ input.addEventListener('keydown', function (run) {
     }//I am fairly certain event are not suppose to be called like this
 }
 )
+const Proc = function () {
+    let stuff = input.value
+    console.log("hi")
+    console.log(eval(stuff))//screw you sorcery i filtered every letter
+    //TODO add the Proc im bored now
+}
+window.addEventListener("beginProc", Proc)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Testing stuff all the way down here
+//lalelulolu
+
