@@ -257,12 +257,20 @@ function parseMidi() {
     }
     console.log(MidiFileInHex[10], " ", MidiFileInHex[11]);
     TrackNum = Uint8Array.fromHex(MidiFileInHex[11].toString().replace("0x","")).toString()
-    PPQN =parseHexToDeci((MidiFileInHex[12].toString().replace("0x","").toString()+MidiFileInHex[13].toString().replace("0x","").toString()))
-
-    
+    PPQN = parseHexToDeci((MidiFileInHex[12].toString().replace("0x", "").toString() + MidiFileInHex[13].toString().replace("0x", "").toString()))
+    MTrkPos = []
+    // MTrk finder (from 14)
+    for (let i = 14; i < MidiFileInHex.length-3; i++){
+        if (MidiFileInHex[i].toString()+ MidiFileInHex[i + 1].toString()+ MidiFileInHex[i + 2].toString()+ MidiFileInHex[i + 3].toString() === "0x4d0x540x720x6b") {
+            MTrkPos.push(i)
+        } else {
+            console.log("not at "+ i)
+        }
+    }
+    console.log(MTrkPos)
 }
 
-
+//if ((MidiFileInHex[i].toString(), MidiFileInHex[i + 1].toString(), MidiFileInHex[i + 2].toString(), MidiFileInHex[i + 3].toString()) === ("0x4d", "0x54", "0x72","0x6b") & MidiFileInHex[i+3]!= undefined) {
 
 
 
@@ -302,3 +310,8 @@ window.addEventListener("keydown", MainMidi)
 function MainMidi(event){
 
 }
+
+
+
+
+
